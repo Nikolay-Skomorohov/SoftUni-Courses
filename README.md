@@ -1,1 +1,1 @@
-# SoftUni-Python-Fundamentals
+# SoftUni-Courses
