@@ -10,7 +10,9 @@ objects_list = []
 input_list = input().split(" | ")
 
 while input_list[0] != "end":
-    bank_object = Bank_account(name=input_list[1], bank=input_list[0], balance=float(input_list[2]))
+    bank_object = Bank_account(name=input_list[1],
+                               bank=input_list[0],
+                               balance=float(input_list[2]))
     objects_list.append(bank_object)
     input_list = input().split(" | ")
 

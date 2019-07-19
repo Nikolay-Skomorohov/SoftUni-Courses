@@ -11,7 +11,8 @@ input_list = input().split(" | ")
 
 while input_list[0] != "end":
     if len(input_list) == 3:
-        input_list[2] = "&".join(list(map(lambda x: "[" + x + "]", input_list[2].split(","))))
+        input_list[2] = "&".join(list(map(lambda x: "[" + x + "]",
+                                          input_list[2].split(","))))
         web_object = Website(input_list[0], input_list[1], input_list[2])
 
     else:

@@ -1,8 +1,8 @@
-class Website:
-    def __init__(self, host, domain, queries=None):
-        self.host = host
-        self.domain = domain
-        self.queries = queries
+class Bank_account:
+    def __init__(self, name, bank, balance):
+        self.name = name
+        self.bank = bank
+        self.balance = balance
 
 
 objects_list = []
@@ -10,18 +10,14 @@ objects_list = []
 input_list = input().split(" | ")
 
 while input_list[0] != "end":
-    if len(input_list) == 3:
-        input_list[2] = "&".join(list(map(lambda x: "[" + x + "]", input_list[2].split(","))))
-        web_object = Website(input_list[0], input_list[1], input_list[2])
-
-    else:
-        web_object = Website(input_list[0], input_list[1])
-    objects_list.append(web_object)
+    bank_object = Bank_account(name=input_list[1],
+                               bank=input_list[0],
+                               balance=float(input_list[2]))
+    objects_list.append(bank_object)
     input_list = input().split(" | ")
 
-for obj in objects_list:
-    print(f"https://www.{obj.host}.{obj.domain}", end="")
-    if obj.queries:
-        print(f"/query?={obj.queries}")
-    else:
-        print("")
+sorted_result = sorted(objects_list, key=lambda x: (-x.balance,
+                                                    len(x.bank)))
+
+for obj in sorted_result:
+    print(f"{obj.name} -> {obj.balance:.2f} ({obj.bank})")

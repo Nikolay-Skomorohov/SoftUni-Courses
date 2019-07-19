@@ -9,10 +9,10 @@ class Rectangle:
 
     def is_inside(self, r2):
         if self.left >= r2.left\
-            and self.right <= r2.right\
-            and self.right <= r2.right\
-            and self.top >= r2.top\
-            and self.bottom <= r2.bottom:
+                and self.right <= r2.right\
+                and self.right <= r2.right\
+                and self.top >= r2.top\
+                and self.bottom <= r2.bottom:
             return "Inside"
         else:
             return "Not inside"
