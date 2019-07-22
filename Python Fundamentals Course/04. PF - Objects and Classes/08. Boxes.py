@@ -6,6 +6,7 @@ class Point:
         self.x = x
         self.y = y
 
+    @staticmethod
     def calculate_distance(point1, point2):
         arg1 = (point1.x - point2.x)
         arg2 = (point1.y - point2.y)
