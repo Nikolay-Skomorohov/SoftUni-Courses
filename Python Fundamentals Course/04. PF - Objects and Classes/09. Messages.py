@@ -44,10 +44,10 @@ def print_history(user1, user2):
     if info[0] == [] and info[1] == []:
         print("No messages")
     else:
-        for message, message2 in itertools.zip_longest(user2.received_messages, user1.received_messages):
-            if message and message.sender == user1:
+        for message, message2 in itertools.zip_longest(info[0], info[1]):
+            if message:
                 print(f"{user1.username}: {message.content}")
-            if message2 and message2.sender == user2:
+            if message2:
                 print(f"{message2.content} :{user2.username}")
 
 
@@ -58,7 +58,7 @@ def main():
         if input_list[0] == "register":
             new_user = create_user(input_list[1])
             user_list.append(new_user)
-        elif len(input_list) > 2 and input_list[1] == "send":
+        elif input_list[1] == "send":
             if input_list[2] in [user.username for user in user_list]\
                     and input_list[0] in [user.username for user in user_list]:
                 sender = next(user for user in user_list if user.username == input_list[0])
