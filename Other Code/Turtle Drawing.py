@@ -26,19 +26,34 @@ def hexagon(t, length):
 def radial_hexagons(t, length, n=25):
     """Draws a radial pattern of n hexas with the given length"""
     for count in range(n):
-        hexagon(t, length)
-        t.left(360 / n)
+        for count2 in range(n):
+            t.screen.colormode(255)
+            t.pencolor(random.randint(0, 255),
+                       random.randint(0, 255),
+                       random.randint(0, 255))
+            t.begin_fill()
+            t.fillcolor(random.randint(0, 255),
+                        random.randint(0, 255),
+                        random.randint(0, 255))
+            hexagon(t, length)
+            t.left(360 / n)
+            t.end_fill()
 
 
 def random_walk(t, distance, turns=20):
     """Turns a random number of degrees
     and moves a given distance for a fixed number of turns."""
     for x in range(turns):
+        t.screen.colormode(255)
+        t.pencolor(random.randint(0, 255),
+                   random.randint(0, 255),
+                   random.randint(0, 255))
         if x % 2 == 0:
             t.left(random.randint(0, 270))
         else:
             t.right(random.randint(0, 270))
         t.forward(distance)
+    t.end_fill()
 
 
 def main():
