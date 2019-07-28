@@ -15,9 +15,8 @@ The script searches jobs.bg for the amount of job listings per software technolo
 
 
 import requests
-import bs4
-import selenium
-
+from bs4 import BeautifulSoup
+from selenium import webdriver
 
 class SoftTech:
     def __init__(self):
@@ -138,6 +137,15 @@ class HTML(SoftTech):
 
 class CSS(SoftTech):
     pass
+
+
+geckodriver = 'C:\\geckodriver.exe'
+options = webdriver.FirefoxOptions()
+options.add_argument('-headless')
+browser = webdriver.Firefox(executable_path=geckodriver, options=options)
+browser.get('http://jobs.bg')
+
+
 
 
 
