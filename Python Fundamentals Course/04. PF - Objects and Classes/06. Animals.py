@@ -1,5 +1,5 @@
 class Animal:
-    def __init__(self, name, age, par):
+    def __init__(self, name: str, age: int, par: int):
         self.name = name
         self.age = age
         self.par = par
@@ -7,28 +7,22 @@ class Animal:
 
 class Dog(Animal):
     def talk(self):
-        to_print = """I'm a Distinguishedog, and I will now produce a distinguished sound! Bau Bau."""
-        return to_print
+        return "I'm a Distinguishedog, and I will now produce a distinguished sound! Bau Bau."
 
 
 class Cat(Animal):
     def talk(self):
-        to_print = """I'm an Aristocat, and I will now produce an aristocratic sound! Myau Myau."""
-        return to_print
+        return "I'm an Aristocat, and I will now produce an aristocratic sound! Myau Myau."
 
 
 class Snake(Animal):
     def talk(self):
-        to_print = """I'm a Sophistisnake, and I will now produce a sophisticated sound! Honey, I'm home."""
-        return to_print
+        return "I'm a Sophistisnake, and I will now produce a sophisticated sound! Honey, I'm home."
 
 
 def find_animal(name: str, animals_list: list):
-    to_speak = ""
-    for item in animals_list:
-        if item.name == name:
-            to_speak = item
-    return to_speak
+    to_talk = next(filter(lambda x: x.name == name, animals_list))
+    print(to_talk.talk())
 
 
 def print_result(animals: list):
@@ -51,23 +45,20 @@ def print_result(animals: list):
 
 def main():
     animals_list = []
-
     input_list = [item for item in input().split()]
 
-    while input_list[0] != "I'm":
+    while " ".join(input_list) != "I'm your Huckleberry":
         if input_list[0] == "talk":
-            to_speak = find_animal(input_list[1], animals_list)
-            print(to_speak.talk())
+            find_animal(input_list[1], animals_list)
         elif input_list[0] == "Dog":
-            new_animal = Dog(input_list[1], input_list[2], input_list[3])
+            new_animal = Dog(input_list[1], int(input_list[2]), int(input_list[3]))
             animals_list.append(new_animal)
         elif input_list[0] == "Cat":
-            new_animal = Cat(input_list[1], input_list[2], input_list[3])
+            new_animal = Cat(input_list[1], int(input_list[2]), int(input_list[3]))
             animals_list.append(new_animal)
         elif input_list[0] == "Snake":
-            new_animal = Snake(input_list[1], input_list[2], input_list[3])
+            new_animal = Snake(input_list[1], int(input_list[2]), int(input_list[3]))
             animals_list.append(new_animal)
-
         input_list = [item for item in input().split()]
 
     print_result(animals_list)

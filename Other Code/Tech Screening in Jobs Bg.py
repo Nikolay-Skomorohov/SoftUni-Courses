@@ -18,6 +18,7 @@ import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
 
+
 class SoftTech:
     def __init__(self):
         self.tech_total = 0

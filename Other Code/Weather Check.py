@@ -39,7 +39,7 @@ foreRegex = re.compile(r'(alt=")(.*?)("\s)')
 
 # Visualization - 10 day forecast
 
-for i in range(0,-10,-1):
+for i in range(0, -10, -1):
     print('Времето в Пловдив на ' + elemDate10[i].getText() + ' ще е:')
     print('Прогноза: ' + foreRegex.search(str(elemDesc10[i])).group(2))
     print('Max температура: ' + elemTempMax10[i].getText())
