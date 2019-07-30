@@ -26,21 +26,16 @@ def create_message(sender: User, message):
 
 
 def check_users_for_messages(user1: User, user2: User):
-    user1_to_user2 = []
-    user2_to_user1 = []
-    for message_user in user1.received_messages:
-        if message_user.sender == user2:
-            user2_to_user1.append(message_user)
+    user1_to_user2 = [msg_usr for msg_usr in user2.received_messages if msg_usr.sender == user1]
+    user2_to_user1 = [msg_usr for msg_usr in user1.received_messages if msg_usr.sender == user2]
 
-    for message_user in user2.received_messages:
-        if message_user.sender == user1:
-            user1_to_user2.append(message_user)
     result = (user1_to_user2, user2_to_user1)
     return result
 
 
 def print_history(user1, user2):
     info = check_users_for_messages(user1, user2)
+
     if info[0] == [] and info[1] == []:
         print("No messages")
     else:
@@ -54,15 +49,18 @@ def print_history(user1, user2):
 def main():
     user_list = []
     input_list = [item for item in input().split()]
+
     while input_list[0] != "exit":
         if input_list[0] == "register":
             new_user = create_user(input_list[1])
             user_list.append(new_user)
         elif input_list[1] == "send":
-            if input_list[2] in [user.username for user in user_list]\
-                    and input_list[0] in [user.username for user in user_list]:
+            if (input_list[2] in [user.username for user in user_list] and
+                    input_list[0] in [user.username for user in user_list]):
+
                 sender = next(user for user in user_list if user.username == input_list[0])
                 receiver = next(user for user in user_list if user.username == input_list[2])
+
                 new_message = create_message(sender, input_list[3])
                 add_message(receiver, new_message)
 
@@ -71,6 +69,7 @@ def main():
     users_history = [user for user in input().split()]
     first_user = next(user for user in user_list if user.username == users_history[0])
     second_user = next(user for user in user_list if user.username == users_history[1])
+
     print_history(first_user, second_user)
 
 
