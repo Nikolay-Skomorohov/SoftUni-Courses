@@ -28,7 +28,7 @@ class Animal(ABC):
 
     @age.setter
     def age(self, value):
-        if value == "":
+        if value == "" or value < 0:
             raise Exception("Invalid input!")
         else:
             self.__age = value
@@ -43,6 +43,11 @@ class Animal(ABC):
             raise Exception("Invalid input!")
         else:
             self.__gender = value
+
+    def __str__(self):
+        return f"{self.__class__.__name__}\n" \
+               f"{self.name} {self.age} {self.gender}\n" \
+               f"{self.produce_sound()}"
 
 
 class Dog(Animal):
@@ -86,50 +91,45 @@ class Tomcat(Cat):
         self.__gender = "Male"
 
 
-def input_data():
-    animals_list = []
+def main():
     animal_type_input = input()
     animal_specs_input = input().split()
     while animal_type_input != "Beast!":
-        if animal_type_input == "Dog":
-            new_dog = Dog(animal_specs_input[0],
-                          int(animal_specs_input[1]),
-                          animal_specs_input[2])
-            animals_list.append(new_dog)
-        elif animal_type_input == "Frog":
-            new_frog = Frog(animal_specs_input[0],
-                            int(animal_specs_input[1]),
-                            animal_specs_input[2])
-            animals_list.append(new_frog)
-        elif animal_type_input == "Cat":
-            new_cat = Frog(animal_specs_input[0],
-                           int(animal_specs_input[1]),
-                           animal_specs_input[2])
-            animals_list.append(new_cat)
-        elif animal_type_input == "Kitten":
-            new_kitten = Frog(animal_specs_input[0],
-                              int(animal_specs_input[1]),
-                              animal_specs_input[2])
-            animals_list.append(new_kitten)
-        elif animal_type_input == "Tomcat":
-            new_tomcat = Frog(animal_specs_input[0],
-                              int(animal_specs_input[1]),
-                              animal_specs_input[2])
-            animals_list.append(new_tomcat)
-        else:
-            raise Exception("Invalid animal type input")
+        try:
+            if animal_type_input == "Dog":
+                animal_to_create = Dog(animal_specs_input[0],
+                                       int(animal_specs_input[1]),
+                                       animal_specs_input[2])
+
+            elif animal_type_input == "Frog":
+                animal_to_create = Frog(animal_specs_input[0],
+                                        int(animal_specs_input[1]),
+                                        animal_specs_input[2])
+
+            elif animal_type_input == "Cat":
+                animal_to_create = Cat(animal_specs_input[0],
+                                       int(animal_specs_input[1]),
+                                       animal_specs_input[2])
+
+            elif animal_type_input == "Kitten":
+                animal_to_create = Kitten(animal_specs_input[0],
+                                          int(animal_specs_input[1]),
+                                          animal_specs_input[2])
+
+            elif animal_type_input == "Tomcat":
+                animal_to_create = Tomcat(animal_specs_input[0],
+                                          int(animal_specs_input[1]),
+                                          animal_specs_input[2])
+            else:
+                raise Exception("Invalid input!")
+            print(animal_to_create)
+        except Exception as text:
+            print(text)
 
         animal_type_input = input()
+        if animal_type_input == "Beast!":
+            break
         animal_specs_input = input().split()
-    return animals_list
-
-def print_data():
-
-
-
-def main():
-    to_print_list = input_data()
-    print_data(to_print_list)
 
 
 if __name__ == "__main__":
