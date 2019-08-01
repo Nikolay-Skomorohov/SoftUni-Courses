@@ -13,7 +13,6 @@ The script searches jobs.bg for the amount of job listings per software technolo
 
 # 1. SCRIPT SETUP
 
-
 import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
@@ -31,8 +30,20 @@ class SoftTech:
         self.stara_zagora = 0
         self.ruse = 0
 
-    def add_to_city(self, city):
-        pass
+    def add_to_city(self, city: str, value: int):
+        if city in "sofia":
+            self.sofia += value
+        elif city in "plovdiv":
+            self.plovdiv += value
+        elif city in "varna":
+            self.varna += value
+        elif city in "burgas":
+            self.burgas += value
+        elif city in "stara zagora":
+            self.stara_zagora += value
+        elif city in "ruse":
+            self.ruse += value
+        self.bulgaria += value
 
 
 class Python(SoftTech):
@@ -42,6 +53,61 @@ class Python(SoftTech):
         self.flask = 0
         self.pandas = 0
         self.tensor_flow = 0
+        self.bottle = 0
+        self.numpy = 0
+        self.pyramid = 0
+        self.web2py = 0
+        self.cherrypy = 0
+        self.tornado = 0
+        self.pylons = 0
+        self.turbogears = 0
+        self.keras = 0
+        self.pytorch = 0
+        self.theano = 0
+        self.matplotlib = 0
+        self.scikit = 0
+        self.scrapy = 0
+        self.pygame = 0
+
+    def add_to_framework(self, frame: str, value: int):
+        if frame in "django":
+            self.django += value
+        elif frame in "flask":
+            self.flask += value
+        elif frame in "pandas":
+            self.pandas += value
+        elif frame in "tensor-flow, tensorflow":
+            self.tensor_flow += value
+        elif frame in "bottle":
+            self.bottle += value
+        elif frame in "numpy":
+            self.numpy += value
+        elif frame in "pyramid":
+            self.pyramid += value
+        elif frame in "web2py":
+            self.web2py += value
+        elif frame in "cherrypy":
+            self.cherrypy += value
+        elif frame in "tornado":
+            self.tornado += value
+        elif frame in "pylons":
+            self.pylons += value
+        elif frame in "turbogears, turbo-gears":
+            self.turbogears += value
+        elif frame in "keras":
+            self.keras += value
+        elif frame in "pytorch":
+            self.pytorch += value
+        elif frame in "theano":
+            self.theano += value
+        elif frame in "matplotlib":
+            self.matplotlib += value
+        elif frame in "scikit":
+            self.scikit += value
+        elif frame in "scrapy":
+            self.scrapy += value
+        elif frame in "pygame":
+            self.pygame += value
 
 
 class JavaScript(SoftTech):
@@ -55,6 +121,22 @@ class JavaScript(SoftTech):
         self.nodejs = 0
         self.ember = 0
 
+    def add_to_framework(self, frame: str, value: int):
+        if frame in "jquery":
+            self.jquery += value
+        elif frame in "angular.js":
+            self.angular += value
+        elif frame in "react.js":
+            self.react += value
+        elif frame in "vue.js":
+            self.vue += value
+        elif frame in "express":
+            self.express += value
+        elif frame in "node.js":
+            self.nodejs += value
+        elif frame in "ember":
+            self.ember += value
+
 
 class PHP(SoftTech):
     def __init__(self):
@@ -62,12 +144,27 @@ class PHP(SoftTech):
         self.symfony = 0
         self.laravel = 0
         self.drupal = 0
+        self.wordpress = 0
+
+    def add_to_framework(self, frame: str, value: int):
+        if frame in "symfony":
+            self.symfony += value
+        elif frame in "laravel":
+            self.laravel += value
+        elif frame in "drupal":
+            self.drupal += value
+        elif frame in "wordpress":
+            self.wordpress += value
 
 
 class Java(SoftTech):
     def __init__(self):
         super().__init__()
         self.spring = 0
+
+    def add_to_framework(self, frame: str, value: int):
+        if frame in "spring":
+            self.spring += value
 
 
 class CPlus(SoftTech):
@@ -91,6 +188,10 @@ class DotNet(SoftTech):
         super().__init__()
         self.aspnet = 0
 
+    def add_to_framework(self, frame: str, value: int):
+        if frame in "aspnet":
+            self.aspnet += value
+
 
 class Rust(SoftTech):
     pass
@@ -101,6 +202,10 @@ class Ruby(SoftTech):
         super().__init__()
         self.ruby_on_rails = 0
 
+    def add_to_framework(self, frame: str, value: int):
+        if frame in "ruby on rails":
+            self.ruby_on_rails += value
+
 
 class Kotlin(SoftTech):
     pass
@@ -110,7 +215,7 @@ class TypeScript(SoftTech):
     pass
 
 
-class CofeeScript(SoftTech):
+class CoffeeScript(SoftTech):
     pass
 
 
@@ -131,6 +236,23 @@ class SQL(SoftTech):
         self.mongodb = 0
         self.sqlite = 0
         self.sqlalchemy = 0
+        self.mariadb = 0
+
+    def add_to_framework(self, frame: str, value: int):
+        if frame in "mysql":
+            self.mysql += value
+        elif frame in "postgresql":
+            self.postgresql += value
+        elif frame in "elasticsearch":
+            self.elasticsearch += value
+        elif frame in "mongodb":
+            self.mongodb += value
+        elif frame in "sqlite":
+            self.sqlite += value
+        elif frame in "sqlalchemy":
+            self.sqlalchemy += value
+        elif frame in "mariadb":
+            self.mariadb += value
 
 
 class HTML(SoftTech):
@@ -139,6 +261,9 @@ class HTML(SoftTech):
 
 class CSS(SoftTech):
     pass
+
+
+# 2. GO TO JOBS.BG
 
 
 gecko_driver = 'C:\\geckodriver.exe'
@@ -163,11 +288,3 @@ button_to_click = browser.find_element_by_xpath(
     "/html/body/div[1]/div/div[2]/table[2]/tbody/tr/td/form/div[2]/table/tbody/tr/td/table/tbody/tr[3]/td[1]")
 text = button_to_click.text.split()
 print(text[-1])
-
-
-
-
-
-
-
-
