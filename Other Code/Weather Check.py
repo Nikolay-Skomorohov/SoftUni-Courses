@@ -3,56 +3,56 @@
 # plovdivForecast.py - takes the weather forecast for Plovdiv
 # for the next 10 days and displays it - sinoptik.bg
 
-import sys, os, requests, bs4, re
+import requests
+import bs4
+import re
 
 # Web data collection
 
-resT = requests.get('https://www.sinoptik.bg/plovdiv-bulgaria-100728193')
-resT.status_code == requests.codes.ok
-plovdivT = bs4.BeautifulSoup(resT.text, features="lxml")
+res_temp = requests.get('https://www.sinoptik.bg/plovdiv-bulgaria-100728193')
+plovdiv_temp_now = bs4.BeautifulSoup(res_temp.text, features="lxml")
 
-res10 = requests.get('https://www.sinoptik.bg/plovdiv-bulgaria-100728193/10-days')
-res10.status_code == requests.codes.ok
-plovdiv10 = bs4.BeautifulSoup(res10.text, features="lxml")
+res_10day = requests.get('https://www.sinoptik.bg/plovdiv-bulgaria-100728193/10-days')
+plovdiv_temp_10day = bs4.BeautifulSoup(res_10day.text, features="lxml")
 
 # Transform the data
 
-# Data for resT/plovdivT
+# Data for res_temp/plovdiv_temp_now
 
-elemTempT = plovdivT.select('.wfCurrentTemp')
-elemFeelT = plovdivT.select('.wfCurrentFeelTemp')
-elemDescT = plovdivT.select('.wfCurrentContent strong')
-elemWindT = plovdivT.select('.wfCurrentWind')
-windRegex = re.compile(r'\d.\d\s[m]\W[s]')
+elem_temp_now = plovdiv_temp_now.select('.wfCurrentTemp')
+elem_feel_now = plovdiv_temp_now.select('.wfCurrentFeelTemp')
+elem_desc_now = plovdiv_temp_now.select('.wfCurrentContent strong')
+elem_wind_now = plovdiv_temp_now.select('.wfCurrentWind')
+wind_regex = re.compile(r'\d.\d\s[m]\W[s]')
 
-# Data for res10/plovdiv10
+# Data for res_10day/plovdiv_temp_10day
 
-elemDate10 = plovdiv10.select('.wf10dayRightDate')
-elemTempMax10 = plovdiv10.select('.wf10dayRightTemp')
-elemTempMin10 = plovdiv10.select('.wf10dayRightTempLow')
-elemDesc10 = plovdiv10.select('.wf10dayRightImg')
-elemRain10 = plovdiv10.select('.wf10dayRightRainValue')
-elemWind10 = plovdiv10.select('.wf10dayRightWind')
-foreRegex = re.compile(r'(alt=")(.*?)("\s)')
+elem_date_10day = plovdiv_temp_10day.select('.wf10dayRightDate')
+elem_temp_max_10day = plovdiv_temp_10day.select('.wf10dayRightTemp')
+elem_temp_min_10day = plovdiv_temp_10day.select('.wf10dayRightTempLow')
+elem_desc_10day = plovdiv_temp_10day.select('.wf10dayRightImg')
+elem_rain_10day = plovdiv_temp_10day.select('.wf10dayRightRainValue')
+elem_wind_10day = plovdiv_temp_10day.select('.wf10dayRightWind')
+regex_10day = re.compile(r'(alt=")(.*?)("\s)')
 
 # Visualize the data
 
 # Visualization - 10 day forecast
 
 for i in range(0, -10, -1):
-    print('Времето в Пловдив на ' + elemDate10[i].getText() + ' ще е:')
-    print('Прогноза: ' + foreRegex.search(str(elemDesc10[i])).group(2))
-    print('Max температура: ' + elemTempMax10[i].getText())
-    print('Мин температура: ' + elemTempMin10[i].getText())
-    print('Вероятност за валежи: ' + elemRain10[i].getText())
-    print('Вятър: ' + windRegex.search(str(elemWind10[i])).group() )
+    print('Времето в Пловдив на ' + elem_date_10day[i].getText() + ' ще е:')
+    print('Прогноза: ' + regex_10day.search(str(elem_desc_10day[i])).group(2))
+    print('Max температура: ' + elem_temp_max_10day[i].getText())
+    print('Мин температура: ' + elem_temp_min_10day[i].getText())
+    print('Вероятност за валежи: ' + elem_rain_10day[i].getText())
+    print('Вятър: ' + wind_regex.search(str(elem_wind_10day[i])).group())
     print()
 
 # Visualization of the current forecast
 
 print('Времето в Пловдив е:')
-print('В момента: ' + elemDescT[0].getText())
-print('Температура: ' + elemTempT[0].getText())
-print(elemFeelT[0].getText())
-print('Вятър: ' + windRegex.search(str(elemWindT[0])).group())
+print('В момента: ' + elem_desc_now[0].getText())
+print('Температура: ' + elem_temp_now[0].getText())
+print(elem_feel_now[0].getText())
+print('Вятър: ' + wind_regex.search(str(elem_wind_now[0])).group())
 print()
