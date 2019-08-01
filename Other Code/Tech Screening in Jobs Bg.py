@@ -17,6 +17,7 @@ The script searches jobs.bg for the amount of job listings per software technolo
 import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 
 
 class SoftTech:
@@ -140,12 +141,28 @@ class CSS(SoftTech):
     pass
 
 
-geckodriver = 'C:\\geckodriver.exe'
-options = webdriver.FirefoxOptions()
-options.add_argument('-headless')
-browser = webdriver.Firefox(executable_path=geckodriver, options=options)
+gecko_driver = 'C:\\geckodriver.exe'
+# options = webdriver.FirefoxOptions()
+# options.add_argument('-headless')
+browser = webdriver.Firefox(executable_path=gecko_driver)
 browser.get('http://jobs.bg')
-
+button_to_click = browser.find_element_by_xpath(
+    "/html/body/table[2]/tbody/tr/td/table[2]/tbody/tr/td[1]/form/table/tbody/tr[7]/td/a/span[1]")
+button_to_click.click()
+button_to_click = browser.find_element_by_xpath(
+    '//*[@id="keyword"]')
+text_input = "Python"
+button_to_click.send_keys(text_input)
+button_to_click = browser.find_element_by_xpath('//*[@id="addKeywordLink"]')
+button_to_click.click()
+button_to_click = browser.find_element_by_xpath(
+    '/html/body/table[2]/tbody/tr/td/table[2]/tbody/tr/td[1]/form/table/tbody/tr[12]/td/a')
+browser.implicitly_wait(10)
+button_to_click.click()
+button_to_click = browser.find_element_by_xpath(
+    "/html/body/div[1]/div/div[2]/table[2]/tbody/tr/td/form/div[2]/table/tbody/tr/td/table/tbody/tr[3]/td[1]")
+text = button_to_click.text.split()
+print(text[-1])
 
 
 
