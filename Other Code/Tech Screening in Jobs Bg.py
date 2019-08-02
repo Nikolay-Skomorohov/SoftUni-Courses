@@ -13,10 +13,12 @@ The script searches jobs.bg for the amount of job listings per software technolo
 
 # 1. SCRIPT SETUP
 
-import requests
-from bs4 import BeautifulSoup
+import time
+# import re
+# import requests
+# from bs4 import BeautifulSoup
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
+# from selenium.webdriver.common.keys import Keys
 
 
 class SoftTech:
@@ -112,6 +114,7 @@ class Python(SoftTech):
     def search_term(self):
         return 'python'
 
+
 class JavaScript(SoftTech):
     def __init__(self):
         super().__init__()
@@ -193,9 +196,9 @@ class Swift(SoftTech):
         return 'swift'
 
 
-class ObjectC(SoftTech):
+class ObjectiveC(SoftTech):
     def search_term(self):
-        return 'objectc'
+        return 'objective c'
 
 
 class DotNet(SoftTech):
@@ -209,6 +212,7 @@ class DotNet(SoftTech):
 
     def search_term(self):
         return '.net'
+
 
 class Rust(SoftTech):
     def search_term(self):
@@ -226,6 +230,8 @@ class Ruby(SoftTech):
 
     def search_term(self):
         return 'ruby'
+
+
 class Kotlin(SoftTech):
     def search_term(self):
         return 'kotlin'
@@ -278,7 +284,6 @@ class SQL(SoftTech):
         elif frame in "mariadb":
             self.mariadb += value
 
-
     def search_term(self):
         return 'sql'
 
@@ -295,7 +300,7 @@ class CSS(SoftTech):
 
 class Go(SoftTech):
     def search_term(self):
-        return 'go'
+        return 'golang'
 
 
 class Scala(SoftTech):
@@ -313,9 +318,9 @@ class Erlang(SoftTech):
         return 'erlang'
 
 
-class Elexir(SoftTech):
+class Elixir(SoftTech):
     def search_term(self):
-        return 'elexir'
+        return 'elixir'
 
 
 class Matlab(SoftTech):
@@ -364,14 +369,17 @@ class Bash(SoftTech):
 
 
 # 2. CREATE DATABASE
-tech_obj_list= []
+
+before = time.time()
+
+tech_obj_list = []
 cities = ("all", "sofia", 'plovdiv', 'varna', 'burgas', 'stara zagora', 'ruse')
 technologies = ('python', 'javascript', 'php', 'java',
-                'c++', 'c#', 'swift', 'objectc', '.net',
+                'c++', 'c#', 'swift', 'objectivec', '.net',
                 'rust', 'ruby', 'kotlin', 'typescript',
                 'coffeescript', 'perl', 'webassembly', 'sql',
-                'html', 'css', 'go', 'scala',
-                'haskell', 'erlang', 'elexir', 'matlab',
+                'html', 'css', 'golang', 'scala',
+                'haskell', 'erlang', 'elixir', 'matlab',
                 'groovy', 'visual basic', 'delphi', 'dart',
                 'julia', "clojure", 'vba', 'bash',)
 
@@ -391,8 +399,8 @@ for tech in technologies:
         new_obj = CSharp()
     elif tech == 'swift':
         new_obj = Swift()
-    elif tech == 'objectc':
-        new_obj = ObjectC()
+    elif tech == 'objectivec':
+        new_obj = ObjectiveC()
     elif tech == '.net':
         new_obj = DotNet()
     elif tech == 'rust':
@@ -415,16 +423,16 @@ for tech in technologies:
         new_obj = HTML()
     elif tech == 'css':
         new_obj = CSS()
-    elif tech == 'go':
+    elif tech == 'golang':
         new_obj = Go()
     elif tech == 'scala':
         new_obj = Scala()
-    elif tech == 'haskell':
+    elif tech == 'haskel':
         new_obj = Haskell()
     elif tech == 'erlang':
         new_obj = Erlang()
-    elif tech == 'elexir':
-        new_obj = Elexir()
+    elif tech == 'elixir':
+        new_obj = Elixir()
     elif tech == 'matlab':
         new_obj = Matlab()
     elif tech == 'groovy':
@@ -460,7 +468,7 @@ for town in range(1):
         button_to_click.click()
         button_to_click = browser.find_element_by_xpath(
             '//*[@id="keyword"]')
-        text_input = "pycharm"
+        text_input = obj.search_term()
         button_to_click.send_keys(text_input)
         button_to_click = browser.find_element_by_xpath('//*[@id="addKeywordLink"]')
         button_to_click.click()
@@ -471,4 +479,8 @@ for town in range(1):
         button_to_click = browser.find_element_by_xpath(
             "/html/body/div[1]/div/div[2]/table[2]/tbody/tr/td/form/div[2]/table/tbody/tr/td/table/tbody/tr[3]/td[1]")
         text = button_to_click.text.split()
-        print(text[-1])
+        print(f"{obj.__class__.__name__}: {text[-1]}")
+        browser.quit()
+
+after = time.time()
+print(f"The program finished in {(after - before) // 60:.0f} minutes and {((after - before) % 60):.0f} seconds.")
