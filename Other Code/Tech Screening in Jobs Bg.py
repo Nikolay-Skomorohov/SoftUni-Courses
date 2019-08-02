@@ -370,7 +370,7 @@ class Bash(SoftTech):
 
 # 2. CREATE DATABASE
 
-before = time.time()
+start_time = time.time()
 
 tech_obj_list = []
 cities = ("all", "sofia", 'plovdiv', 'varna', 'burgas', 'stara zagora', 'ruse')
@@ -456,31 +456,43 @@ for tech in technologies:
 
 # 3. GO TO JOBS.BG
 
+gecko_driver = 'C:\\geckodriver.exe'
+options = webdriver.FirefoxOptions()
+options.add_argument('-headless')
+browser = webdriver.Firefox(executable_path=gecko_driver, options=options)
+browser.get('http://jobs.bg')
+count = 0
 for town in range(1):
-    for obj in tech_obj_list:
-        gecko_driver = 'C:\\geckodriver.exe'
-        options = webdriver.FirefoxOptions()
-        options.add_argument('-headless')
-        browser = webdriver.Firefox(executable_path=gecko_driver, options=options)
-        browser.get('http://jobs.bg')
-        button_to_click = browser.find_element_by_xpath(
+    for obj_from_tech_list in tech_obj_list:
+        open_keyword_tab = browser.find_element_by_xpath(
             "/html/body/table[2]/tbody/tr/td/table[2]/tbody/tr/td[1]/form/table/tbody/tr[7]/td/a/span[1]")
-        button_to_click.click()
-        button_to_click = browser.find_element_by_xpath(
-            '//*[@id="keyword"]')
-        text_input = obj.search_term()
-        button_to_click.send_keys(text_input)
-        button_to_click = browser.find_element_by_xpath('//*[@id="addKeywordLink"]')
-        button_to_click.click()
-        button_to_click = browser.find_element_by_xpath(
+        open_keyword_tab.click()
+        keyword_tab = browser.find_element_by_xpath('//*[@id="keyword"]')
+        keyword_tab.click()
+        input_keyword_tab = obj_from_tech_list.search_term()
+        keyword_tab.send_keys(input_keyword_tab)
+        add_keyword_button = browser.find_element_by_xpath('//*[@id="addKeywordLink"]')
+        add_keyword_button.click()
+        site_search_button = browser.find_element_by_xpath(
             '/html/body/table[2]/tbody/tr/td/table[2]/tbody/tr/td[1]/form/table/tbody/tr[12]/td/a')
-        browser.implicitly_wait(5)
-        button_to_click.click()
-        button_to_click = browser.find_element_by_xpath(
-            "/html/body/div[1]/div/div[2]/table[2]/tbody/tr/td/form/div[2]/table/tbody/tr/td/table/tbody/tr[3]/td[1]")
-        text = button_to_click.text.split()
-        print(f"{obj.__class__.__name__}: {text[-1]}")
-        browser.quit()
+        browser.implicitly_wait(2)
+        site_search_button.click()
+        try:
+            pop_up_no_button = browser.find_element_by_xpath(
+                '/html/body/table[2]/tbody/tr/td/table[2]/tbody/tr/td[1]/form/table/tbody/tr[12]/td/div/div[2]/center/table/tbody/tr/td[2]/a')
+            pop_up_no_button.click()
+        except:
+            pass
+        # search_result_count = browser.find_element_by_xpath(
+            # "/html/body/div[1]/div/div[2]/table[2]/tbody/tr/td/form/div[2]/table/tbody/tr/td/table/tbody/tr[3]/td[1]")
+        search_result_count = browser.find_element_by_css_selector(
+            "#search_results_div > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(1)")
+        result_text = search_result_count.text.split()
+        print(f"{obj_from_tech_list.__class__.__name__}: {result_text[-1]}")
+        browser.get('http://jobs.bg')
 
-after = time.time()
-print(f"The program finished in {(after - before) // 60:.0f} minutes and {((after - before) % 60):.0f} seconds.")
+
+browser.quit()
+end_time = time.time()
+print(f"The program finished in {(end_time - start_time) // 60:.0f}"
+      f" minutes and {((end_time - start_time) % 60):.0f} seconds.")
