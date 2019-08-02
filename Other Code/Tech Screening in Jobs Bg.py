@@ -1,5 +1,5 @@
 """
-Program: Tech Screening in Jobs bg.py
+Program: Tech Screening in Jobs Bg.py
 Author: Nikolay Skomorohov
 
 The script searches jobs.bg for the amount of job listings per software technology.
@@ -282,6 +282,7 @@ class SQL(SoftTech):
     def search_term(self):
         return 'sql'
 
+
 class HTML(SoftTech):
     def search_term(self):
         return 'html'
@@ -363,7 +364,7 @@ class Bash(SoftTech):
 
 
 # 2. CREATE DATABASE
-
+tech_obj_list= []
 cities = ("all", "sofia", 'plovdiv', 'varna', 'burgas', 'stara zagora', 'ruse')
 technologies = ('python', 'javascript', 'php', 'java',
                 'c++', 'c#', 'swift', 'objectc', '.net',
@@ -374,12 +375,81 @@ technologies = ('python', 'javascript', 'php', 'java',
                 'groovy', 'visual basic', 'delphi', 'dart',
                 'julia', "clojure", 'vba', 'bash',)
 
+for tech in technologies:
+    new_obj = None
+    if tech == "python":
+        new_obj = Python()
+    elif tech == 'javascript':
+        new_obj = JavaScript()
+    elif tech == 'php':
+        new_obj = PHP()
+    elif tech == 'java':
+        new_obj = Java()
+    elif tech == 'c++':
+        new_obj = CPlus()
+    elif tech == 'c#':
+        new_obj = CSharp()
+    elif tech == 'swift':
+        new_obj = Swift()
+    elif tech == 'objectc':
+        new_obj = ObjectC()
+    elif tech == '.net':
+        new_obj = DotNet()
+    elif tech == 'rust':
+        new_obj = Rust()
+    elif tech == 'rugy':
+        new_obj = Ruby()
+    elif tech == 'kotlin':
+        new_obj = Kotlin()
+    elif tech == 'typescript':
+        new_obj = TypeScript()
+    elif tech == 'coffeescript':
+        new_obj = CoffeeScript()
+    elif tech == 'perl':
+        new_obj = Perl()
+    elif tech == 'webassembly':
+        new_obj = WebAssembly()
+    elif tech == 'sql':
+        new_obj = SQL()
+    elif tech == 'html':
+        new_obj = HTML()
+    elif tech == 'css':
+        new_obj = CSS()
+    elif tech == 'go':
+        new_obj = Go()
+    elif tech == 'scala':
+        new_obj = Scala()
+    elif tech == 'haskell':
+        new_obj = Haskell()
+    elif tech == 'erlang':
+        new_obj = Erlang()
+    elif tech == 'elexir':
+        new_obj = Elexir()
+    elif tech == 'matlab':
+        new_obj = Matlab()
+    elif tech == 'groovy':
+        new_obj = Groovy()
+    elif tech == 'visual basic':
+        new_obj = VisualBasic()
+    elif tech == 'delphi':
+        new_obj = Delphi()
+    elif tech == 'dart':
+        new_obj = Dart()
+    elif tech == 'julia':
+        new_obj = Julia()
+    elif tech == 'clojure':
+        new_obj = Clojure()
+    elif tech == 'vba':
+        new_obj = VBA()
+    elif tech == 'bash':
+        new_obj = Bash()
+    if new_obj is not None:
+        tech_obj_list.append(new_obj)
 
 # 3. GO TO JOBS.BG
 
 for town in range(1):
-    for tech in technologies:
-        tech_obj = ?
+    for obj in tech_obj_list:
         gecko_driver = 'C:\\geckodriver.exe'
         options = webdriver.FirefoxOptions()
         options.add_argument('-headless')
