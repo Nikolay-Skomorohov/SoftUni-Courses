@@ -5,9 +5,9 @@ Author: Nikolay Skomorohov
 The script searches jobs.bg for the amount of job listings per software technology.
 
 1. Script setup
-2. Go to jobs.bg
-3. Loop for counting listings
-4. Append result to a file
+2. Create the database
+3. Go to jobs.bg
+4. Create a file with the results
 
 """
 
@@ -109,6 +109,8 @@ class Python(SoftTech):
         elif frame in "pygame":
             self.pygame += value
 
+    def search_term(self):
+        return 'python'
 
 class JavaScript(SoftTech):
     def __init__(self):
@@ -137,6 +139,9 @@ class JavaScript(SoftTech):
         elif frame in "ember":
             self.ember += value
 
+    def search_term(self):
+        return 'javascript'
+
 
 class PHP(SoftTech):
     def __init__(self):
@@ -156,6 +161,9 @@ class PHP(SoftTech):
         elif frame in "wordpress":
             self.wordpress += value
 
+    def search_term(self):
+        return 'php'
+
 
 class Java(SoftTech):
     def __init__(self):
@@ -166,21 +174,28 @@ class Java(SoftTech):
         if frame in "spring":
             self.spring += value
 
+    def search_term(self):
+        return 'java'
+
 
 class CPlus(SoftTech):
-    pass
+    def search_term(self):
+        return 'c++'
 
 
 class CSharp(SoftTech):
-    pass
+    def search_term(self):
+        return 'c#'
 
 
 class Swift(SoftTech):
-    pass
+    def search_term(self):
+        return 'swift'
 
 
 class ObjectC(SoftTech):
-    pass
+    def search_term(self):
+        return 'objectc'
 
 
 class DotNet(SoftTech):
@@ -192,9 +207,12 @@ class DotNet(SoftTech):
         if frame in "aspnet":
             self.aspnet += value
 
+    def search_term(self):
+        return '.net'
 
 class Rust(SoftTech):
-    pass
+    def search_term(self):
+        return 'rust'
 
 
 class Ruby(SoftTech):
@@ -206,25 +224,31 @@ class Ruby(SoftTech):
         if frame in "ruby on rails":
             self.ruby_on_rails += value
 
-
+    def search_term(self):
+        return 'ruby'
 class Kotlin(SoftTech):
-    pass
+    def search_term(self):
+        return 'kotlin'
 
 
 class TypeScript(SoftTech):
-    pass
+    def search_term(self):
+        return 'typescript'
 
 
 class CoffeeScript(SoftTech):
-    pass
+    def search_term(self):
+        return 'coffeescript'
 
 
 class Perl(SoftTech):
-    pass
+    def search_term(self):
+        return 'perl'
 
 
 class WebAssembly(SoftTech):
-    pass
+    def search_term(self):
+        return 'webassembly'
 
 
 class SQL(SoftTech):
@@ -255,71 +279,90 @@ class SQL(SoftTech):
             self.mariadb += value
 
 
+    def search_term(self):
+        return 'sql'
+
 class HTML(SoftTech):
-    pass
+    def search_term(self):
+        return 'html'
 
 
 class CSS(SoftTech):
-    pass
+    def search_term(self):
+        return 'css'
 
 
 class Go(SoftTech):
-    pass
+    def search_term(self):
+        return 'go'
 
 
 class Scala(SoftTech):
-    pass
+    def search_term(self):
+        return 'scala'
 
 
 class Haskell(SoftTech):
-    pass
+    def search_term(self):
+        return 'haskell'
 
 
 class Erlang(SoftTech):
-    pass
+    def search_term(self):
+        return 'erlang'
 
 
 class Elexir(SoftTech):
-    pass
+    def search_term(self):
+        return 'elexir'
 
 
 class Matlab(SoftTech):
-    pass
+    def search_term(self):
+        return 'matlab'
 
 
 class Groovy(SoftTech):
-    pass
+    def search_term(self):
+        return 'groovy'
 
 
 class VisualBasic(SoftTech):
-    pass
+    def search_term(self):
+        return 'visual basic'
 
 
 class Delphi(SoftTech):
-    pass
+    def search_term(self):
+        return 'delphi'
 
 
 class Dart(SoftTech):
-    pass
+    def search_term(self):
+        return 'dart'
 
 
 class Julia(SoftTech):
-    pass
+    def search_term(self):
+        return 'julia'
 
 
 class Clojure(SoftTech):
-    pass
+    def search_term(self):
+        return 'clojure'
 
 
 class VBA(SoftTech):
-    pass
+    def search_term(self):
+        return 'vba'
 
 
 class Bash(SoftTech):
-    pass
+    def search_term(self):
+        return 'bash'
 
 
-# 2. GO TO JOBS.BG
+# 2. CREATE DATABASE
 
 cities = ("all", "sofia", 'plovdiv', 'varna', 'burgas', 'stara zagora', 'ruse')
 technologies = ('python', 'javascript', 'php', 'java',
@@ -331,29 +374,31 @@ technologies = ('python', 'javascript', 'php', 'java',
                 'groovy', 'visual basic', 'delphi', 'dart',
                 'julia', "clojure", 'vba', 'bash',)
 
-'''
-for city in cities:
-    for tech in techs:
-        for lib in libreries:
-            gecko_driver = 'C:\\geckodriver.exe'
-            options = webdriver.FirefoxOptions()
-            options.add_argument('-headless')
-            browser = webdriver.Firefox(executable_path=gecko_driver, options=options)
-            browser.get('http://jobs.bg')
-            button_to_click = browser.find_element_by_xpath(
-                "/html/body/table[2]/tbody/tr/td/table[2]/tbody/tr/td[1]/form/table/tbody/tr[7]/td/a/span[1]")
-            button_to_click.click()
-            button_to_click = browser.find_element_by_xpath(
-                '//*[@id="keyword"]')
-            text_input = "pycharm"
-            button_to_click.send_keys(text_input)
-            button_to_click = browser.find_element_by_xpath('//*[@id="addKeywordLink"]')
-            button_to_click.click()
-            button_to_click = browser.find_element_by_xpath(
-                '/html/body/table[2]/tbody/tr/td/table[2]/tbody/tr/td[1]/form/table/tbody/tr[12]/td/a')
-            browser.implicitly_wait(5)
-            button_to_click.click()
-            button_to_click = browser.find_element_by_xpath(
-                "/html/body/div[1]/div/div[2]/table[2]/tbody/tr/td/form/div[2]/table/tbody/tr/td/table/tbody/tr[3]/td[1]")
-            text = button_to_click.text.split()
-            print(text[-1])'''
+
+# 3. GO TO JOBS.BG
+
+for town in range(1):
+    for tech in technologies:
+        tech_obj = ?
+        gecko_driver = 'C:\\geckodriver.exe'
+        options = webdriver.FirefoxOptions()
+        options.add_argument('-headless')
+        browser = webdriver.Firefox(executable_path=gecko_driver, options=options)
+        browser.get('http://jobs.bg')
+        button_to_click = browser.find_element_by_xpath(
+            "/html/body/table[2]/tbody/tr/td/table[2]/tbody/tr/td[1]/form/table/tbody/tr[7]/td/a/span[1]")
+        button_to_click.click()
+        button_to_click = browser.find_element_by_xpath(
+            '//*[@id="keyword"]')
+        text_input = "pycharm"
+        button_to_click.send_keys(text_input)
+        button_to_click = browser.find_element_by_xpath('//*[@id="addKeywordLink"]')
+        button_to_click.click()
+        button_to_click = browser.find_element_by_xpath(
+            '/html/body/table[2]/tbody/tr/td/table[2]/tbody/tr/td[1]/form/table/tbody/tr[12]/td/a')
+        browser.implicitly_wait(5)
+        button_to_click.click()
+        button_to_click = browser.find_element_by_xpath(
+            "/html/body/div[1]/div/div[2]/table[2]/tbody/tr/td/form/div[2]/table/tbody/tr/td/table/tbody/tr[3]/td[1]")
+        text = button_to_click.text.split()
+        print(text[-1])
