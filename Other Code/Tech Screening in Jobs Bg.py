@@ -2,7 +2,8 @@
 Program: Tech Screening in Jobs Bg.py
 Author: Nikolay Skomorohov
 
-The script searches jobs.bg for the amount of job listings per software technology.
+The script searches jobs.bg for the numbers of mentions per software technology.
+The goal is to have a rough approximation of techs demand.
 
 1. Script setup
 2. Create the database
@@ -107,7 +108,8 @@ class Python(SoftTech):
         elif frame in "pygame":
             self.pygame += value
 
-    def search_term(self):
+    @staticmethod
+    def search_term():
         return 'python'
 
 
@@ -138,7 +140,8 @@ class JavaScript(SoftTech):
         elif frame in "ember":
             self.ember += value
 
-    def search_term(self):
+    @staticmethod
+    def search_term():
         return 'javascript'
 
 
@@ -160,7 +163,8 @@ class PHP(SoftTech):
         elif frame in "wordpress":
             self.wordpress += value
 
-    def search_term(self):
+    @staticmethod
+    def search_term():
         return 'php'
 
 
@@ -173,27 +177,32 @@ class Java(SoftTech):
         if frame in "spring":
             self.spring += value
 
-    def search_term(self):
+    @staticmethod
+    def search_term():
         return 'java'
 
 
 class CPlus(SoftTech):
-    def search_term(self):
+    @staticmethod
+    def search_term():
         return 'c++'
 
 
 class CSharp(SoftTech):
-    def search_term(self):
+    @staticmethod
+    def search_term():
         return 'c#'
 
 
 class Swift(SoftTech):
-    def search_term(self):
+    @staticmethod
+    def search_term():
         return 'swift'
 
 
 class ObjectiveC(SoftTech):
-    def search_term(self):
+    @staticmethod
+    def search_term():
         return 'objective c'
 
 
@@ -206,12 +215,14 @@ class DotNet(SoftTech):
         if frame in "aspnet":
             self.aspnet += value
 
-    def search_term(self):
+    @staticmethod
+    def search_term():
         return '.net'
 
 
 class Rust(SoftTech):
-    def search_term(self):
+    @staticmethod
+    def search_term():
         return 'rust'
 
 
@@ -224,32 +235,38 @@ class Ruby(SoftTech):
         if frame in "ruby on rails":
             self.ruby_on_rails += value
 
-    def search_term(self):
+    @staticmethod
+    def search_term():
         return 'ruby'
 
 
 class Kotlin(SoftTech):
-    def search_term(self):
+    @staticmethod
+    def search_term():
         return 'kotlin'
 
 
 class TypeScript(SoftTech):
-    def search_term(self):
+    @staticmethod
+    def search_term():
         return 'typescript'
 
 
 class CoffeeScript(SoftTech):
-    def search_term(self):
+    @staticmethod
+    def search_term():
         return 'coffeescript'
 
 
 class Perl(SoftTech):
-    def search_term(self):
+    @staticmethod
+    def search_term():
         return 'perl'
 
 
 class WebAssembly(SoftTech):
-    def search_term(self):
+    @staticmethod
+    def search_term():
         return 'webassembly'
 
 
@@ -280,87 +297,104 @@ class SQL(SoftTech):
         elif frame in "mariadb":
             self.mariadb += value
 
-    def search_term(self):
+    @staticmethod
+    def search_term():
         return 'sql'
 
 
 class HTML(SoftTech):
-    def search_term(self):
+    @staticmethod
+    def search_term():
         return 'html'
 
 
 class CSS(SoftTech):
-    def search_term(self):
+    @staticmethod
+    def search_term():
         return 'css'
 
 
 class Go(SoftTech):
-    def search_term(self):
+    @staticmethod
+    def search_term():
         return 'golang'
 
 
 class Scala(SoftTech):
-    def search_term(self):
+    @staticmethod
+    def search_term():
         return 'scala'
 
 
 class Haskell(SoftTech):
-    def search_term(self):
+    @staticmethod
+    def search_term():
         return 'haskell'
 
 
 class Erlang(SoftTech):
-    def search_term(self):
+    @staticmethod
+    def search_term():
         return 'erlang'
 
 
 class Elixir(SoftTech):
-    def search_term(self):
+    @staticmethod
+    def search_term():
         return 'elixir'
 
 
 class Matlab(SoftTech):
-    def search_term(self):
+    @staticmethod
+    def search_term():
         return 'matlab'
 
 
 class Groovy(SoftTech):
-    def search_term(self):
+    @staticmethod
+    def search_term():
         return 'groovy'
 
 
 class VisualBasic(SoftTech):
-    def search_term(self):
+    @staticmethod
+    def search_term():
         return 'visual basic'
 
 
 class Delphi(SoftTech):
-    def search_term(self):
+    @staticmethod
+    def search_term():
         return 'delphi'
 
 
 class Dart(SoftTech):
-    def search_term(self):
+    @staticmethod
+    def search_term():
         return 'dart'
 
 
 class Julia(SoftTech):
-    def search_term(self):
+    @staticmethod
+    def search_term():
         return 'julia'
 
 
 class Clojure(SoftTech):
-    def search_term(self):
+    @staticmethod
+    def search_term():
         return 'clojure'
 
 
 class VBA(SoftTech):
-    def search_term(self):
+    @staticmethod
+    def search_term():
         return 'vba'
 
 
 class Bash(SoftTech):
-    def search_term(self):
+    @staticmethod
+    def search_term():
         return 'bash'
 
 
@@ -476,12 +510,14 @@ for town in range(1):
         site_search_button.click()
         try:
             pop_up_no_button = browser.find_element_by_xpath(
-                '/html/body/table[2]/tbody/tr/td/table[2]/tbody/tr/td[1]/form/table/tbody/tr[12]/td/div/div[2]/center/table/tbody/tr/td[2]/a')
+                '/html/body/table[2]/tbody/tr/td/table[2]/tbody/tr/td[1]/form/table/tbody/tr[12]/td/div/div['
+                '2]/center/table/tbody/tr/td[2]/a')
             pop_up_no_button.click()
         except:
             pass
         search_result_count = browser.find_element_by_css_selector(
-            "#search_results_div > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(1)")
+            "#search_results_div > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > "
+            "table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(1)")
         result_text = search_result_count.text.split()
         obj_from_tech_list.add_to_city("all", int(result_text[-1]))
         browser.get('http://jobs.bg')
