@@ -13,18 +13,13 @@ The script searches jobs.bg for the amount of job listings per software technolo
 
 # 1. SCRIPT SETUP
 
-import time
-# import re
-# import requests
-# from bs4 import BeautifulSoup
+from time import time
 from selenium import webdriver
-# from selenium.webdriver.common.keys import Keys
 
 
 class SoftTech:
     def __init__(self):
-        self.tech_total = 0
-        self.bulgaria = 0
+        self.all = 0
         self.sofia = 0
         self.plovdiv = 0
         self.varna = 0
@@ -33,19 +28,20 @@ class SoftTech:
         self.ruse = 0
 
     def add_to_city(self, city: str, value: int):
-        if city in "sofia":
+        if city == "all":
+            self.all += value
+        if city == "sofia":
             self.sofia += value
-        elif city in "plovdiv":
+        elif city == "plovdiv":
             self.plovdiv += value
-        elif city in "varna":
+        elif city == "varna":
             self.varna += value
-        elif city in "burgas":
+        elif city == "burgas":
             self.burgas += value
-        elif city in "stara zagora":
+        elif city == "stara zagora":
             self.stara_zagora += value
-        elif city in "ruse":
+        elif city == "ruse":
             self.ruse += value
-        self.bulgaria += value
 
 
 class Python(SoftTech):
@@ -370,7 +366,7 @@ class Bash(SoftTech):
 
 # 2. CREATE DATABASE
 
-start_time = time.time()
+start_time = time()
 
 tech_obj_list = []
 cities = ("all", "sofia", 'plovdiv', 'varna', 'burgas', 'stara zagora', 'ruse')
@@ -461,7 +457,8 @@ options = webdriver.FirefoxOptions()
 options.add_argument('-headless')
 browser = webdriver.Firefox(executable_path=gecko_driver, options=options)
 browser.get('http://jobs.bg')
-count = 0
+# TO DO - open file
+
 for town in range(1):
     for obj_from_tech_list in tech_obj_list:
         open_keyword_tab = browser.find_element_by_xpath(
@@ -475,7 +472,7 @@ for town in range(1):
         add_keyword_button.click()
         site_search_button = browser.find_element_by_xpath(
             '/html/body/table[2]/tbody/tr/td/table[2]/tbody/tr/td[1]/form/table/tbody/tr[12]/td/a')
-        browser.implicitly_wait(2)
+        browser.implicitly_wait(1)
         site_search_button.click()
         try:
             pop_up_no_button = browser.find_element_by_xpath(
@@ -483,16 +480,15 @@ for town in range(1):
             pop_up_no_button.click()
         except:
             pass
-        # search_result_count = browser.find_element_by_xpath(
-            # "/html/body/div[1]/div/div[2]/table[2]/tbody/tr/td/form/div[2]/table/tbody/tr/td/table/tbody/tr[3]/td[1]")
         search_result_count = browser.find_element_by_css_selector(
             "#search_results_div > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(1)")
         result_text = search_result_count.text.split()
-        print(f"{obj_from_tech_list.__class__.__name__}: {result_text[-1]}")
+        obj_from_tech_list.add_to_city("all", int(result_text[-1]))
         browser.get('http://jobs.bg')
 
-
 browser.quit()
-end_time = time.time()
+for obj_to_print in tech_obj_list:
+    print(f"{obj_to_print.__class__.__name__}: {obj_to_print.all}")
+end_time = time()
 print(f"The program finished in {(end_time - start_time) // 60:.0f}"
       f" minutes and {((end_time - start_time) % 60):.0f} seconds.")
