@@ -5,14 +5,13 @@ Author: Nikolay Skomorohov
 The script searches jobs.bg for the numbers of mentions per software technology.
 The goal is to have a rough approximation of techs demand.
 
-1. Script setup
-2. Create the database
-3. Go to jobs.bg
-4. Create a file with the results
+1. Imports and class creation
+2. Power up selenium driver
+3. Create IT class instances
+4. Go to jobs.bg and loop over cities and techs
+5. Create file with the data
 
 """
-
-# 1. SCRIPT SETUP
 
 from time import time
 from selenium import webdriver
@@ -399,7 +398,7 @@ class Bash(SoftTech):
 
 
 def language_object_creation():
-    cities = ("all", "sofia", 'plovdiv', 'varna', 'burgas', 'stara zagora', 'ruse')
+    """Creates a list with object representations for each IT tech"""
     technologies = ('python', 'javascript', 'php', 'java',
                     'c++', 'c#', 'swift', 'objectivec', '.net',
                     'rust', 'ruby', 'kotlin', 'typescript',
@@ -484,6 +483,7 @@ def language_object_creation():
 
 
 def initiate_web_driver():
+    """Powers up the Firefox browser in hidden mode and passes it with return"""
     gecko_driver = 'C:\\geckodriver.exe'
     options = webdriver.FirefoxOptions()
     options.add_argument('-headless')
@@ -492,16 +492,20 @@ def initiate_web_driver():
 
 
 def get_data_for_techs():
+    """Calls up the driver initiation and language object creation
+     functions, then instructs the driver to go to jobs.bg and
+     loop over each city and IT tech. Calls the print_data function"""
+    locations = ("all", "sofia", 'plovdiv')
     browser = initiate_web_driver()
     tech_obj_list = language_object_creation()
 
-    for town in range(1):
+    for location in locations:
         for obj_from_tech_list in tech_obj_list:
-            if town != "all":
+            browser.get('http://jobs.bg')
+            if not location == "all":
                 pass
             else:
                 pass
-            browser.get('http://jobs.bg')
             open_keyword_tab = browser.find_element_by_xpath(
                 "/html/body/table[2]/tbody/tr/td/table[2]/tbody/tr/td[1]/form/table/tbody/tr[7]/td/a/span[1]")
             open_keyword_tab.click()
@@ -526,7 +530,7 @@ def get_data_for_techs():
                 "#search_results_div > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > "
                 "table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(1)")
             result_text = search_result_count.text.split()
-            obj_from_tech_list.add_to_city("all", int(result_text[-1]))
+            obj_from_tech_list.add_to_city(location, int(result_text[-1]))
             browser.get('http://jobs.bg')
 
     browser.quit()
@@ -534,6 +538,7 @@ def get_data_for_techs():
 
 
 def print_results(tech_obj_list: list):
+    """Print the lists with results produced by the get_data_for_techs function"""
     for obj_to_print in tech_obj_list:
         print(f"{obj_to_print.__class__.__name__}: {obj_to_print.all}")
 
