@@ -398,133 +398,153 @@ class Bash(SoftTech):
         return 'bash'
 
 
-# 2. CREATE DATABASE
+def language_object_creation():
+    cities = ("all", "sofia", 'plovdiv', 'varna', 'burgas', 'stara zagora', 'ruse')
+    technologies = ('python', 'javascript', 'php', 'java',
+                    'c++', 'c#', 'swift', 'objectivec', '.net',
+                    'rust', 'ruby', 'kotlin', 'typescript',
+                    'coffeescript', 'perl', 'webassembly', 'sql',
+                    'html', 'css', 'golang', 'scala',
+                    'haskell', 'erlang', 'elixir', 'matlab',
+                    'groovy', 'visual basic', 'delphi', 'dart',
+                    'julia', "clojure", 'vba', 'bash',)
 
-start_time = time()
+    tech_obj_list = []
+    for tech in technologies:
+        new_obj = None
+        if tech == "python":
+            new_obj = Python()
+        elif tech == 'javascript':
+            new_obj = JavaScript()
+        elif tech == 'php':
+            new_obj = PHP()
+        elif tech == 'java':
+            new_obj = Java()
+        elif tech == 'c++':
+            new_obj = CPlus()
+        elif tech == 'c#':
+            new_obj = CSharp()
+        elif tech == 'swift':
+            new_obj = Swift()
+        elif tech == 'objectivec':
+            new_obj = ObjectiveC()
+        elif tech == '.net':
+            new_obj = DotNet()
+        elif tech == 'rust':
+            new_obj = Rust()
+        elif tech == 'rugy':
+            new_obj = Ruby()
+        elif tech == 'kotlin':
+            new_obj = Kotlin()
+        elif tech == 'typescript':
+            new_obj = TypeScript()
+        elif tech == 'coffeescript':
+            new_obj = CoffeeScript()
+        elif tech == 'perl':
+            new_obj = Perl()
+        elif tech == 'webassembly':
+            new_obj = WebAssembly()
+        elif tech == 'sql':
+            new_obj = SQL()
+        elif tech == 'html':
+            new_obj = HTML()
+        elif tech == 'css':
+            new_obj = CSS()
+        elif tech == 'golang':
+            new_obj = Go()
+        elif tech == 'scala':
+            new_obj = Scala()
+        elif tech == 'haskel':
+            new_obj = Haskell()
+        elif tech == 'erlang':
+            new_obj = Erlang()
+        elif tech == 'elixir':
+            new_obj = Elixir()
+        elif tech == 'matlab':
+            new_obj = Matlab()
+        elif tech == 'groovy':
+            new_obj = Groovy()
+        elif tech == 'visual basic':
+            new_obj = VisualBasic()
+        elif tech == 'delphi':
+            new_obj = Delphi()
+        elif tech == 'dart':
+            new_obj = Dart()
+        elif tech == 'julia':
+            new_obj = Julia()
+        elif tech == 'clojure':
+            new_obj = Clojure()
+        elif tech == 'vba':
+            new_obj = VBA()
+        elif tech == 'bash':
+            new_obj = Bash()
+        if new_obj is not None:
+            tech_obj_list.append(new_obj)
+    return tech_obj_list
 
-tech_obj_list = []
-cities = ("all", "sofia", 'plovdiv', 'varna', 'burgas', 'stara zagora', 'ruse')
-technologies = ('python', 'javascript', 'php', 'java',
-                'c++', 'c#', 'swift', 'objectivec', '.net',
-                'rust', 'ruby', 'kotlin', 'typescript',
-                'coffeescript', 'perl', 'webassembly', 'sql',
-                'html', 'css', 'golang', 'scala',
-                'haskell', 'erlang', 'elixir', 'matlab',
-                'groovy', 'visual basic', 'delphi', 'dart',
-                'julia', "clojure", 'vba', 'bash',)
 
-for tech in technologies:
-    new_obj = None
-    if tech == "python":
-        new_obj = Python()
-    elif tech == 'javascript':
-        new_obj = JavaScript()
-    elif tech == 'php':
-        new_obj = PHP()
-    elif tech == 'java':
-        new_obj = Java()
-    elif tech == 'c++':
-        new_obj = CPlus()
-    elif tech == 'c#':
-        new_obj = CSharp()
-    elif tech == 'swift':
-        new_obj = Swift()
-    elif tech == 'objectivec':
-        new_obj = ObjectiveC()
-    elif tech == '.net':
-        new_obj = DotNet()
-    elif tech == 'rust':
-        new_obj = Rust()
-    elif tech == 'rugy':
-        new_obj = Ruby()
-    elif tech == 'kotlin':
-        new_obj = Kotlin()
-    elif tech == 'typescript':
-        new_obj = TypeScript()
-    elif tech == 'coffeescript':
-        new_obj = CoffeeScript()
-    elif tech == 'perl':
-        new_obj = Perl()
-    elif tech == 'webassembly':
-        new_obj = WebAssembly()
-    elif tech == 'sql':
-        new_obj = SQL()
-    elif tech == 'html':
-        new_obj = HTML()
-    elif tech == 'css':
-        new_obj = CSS()
-    elif tech == 'golang':
-        new_obj = Go()
-    elif tech == 'scala':
-        new_obj = Scala()
-    elif tech == 'haskel':
-        new_obj = Haskell()
-    elif tech == 'erlang':
-        new_obj = Erlang()
-    elif tech == 'elixir':
-        new_obj = Elixir()
-    elif tech == 'matlab':
-        new_obj = Matlab()
-    elif tech == 'groovy':
-        new_obj = Groovy()
-    elif tech == 'visual basic':
-        new_obj = VisualBasic()
-    elif tech == 'delphi':
-        new_obj = Delphi()
-    elif tech == 'dart':
-        new_obj = Dart()
-    elif tech == 'julia':
-        new_obj = Julia()
-    elif tech == 'clojure':
-        new_obj = Clojure()
-    elif tech == 'vba':
-        new_obj = VBA()
-    elif tech == 'bash':
-        new_obj = Bash()
-    if new_obj is not None:
-        tech_obj_list.append(new_obj)
+def initiate_web_driver():
+    gecko_driver = 'C:\\geckodriver.exe'
+    options = webdriver.FirefoxOptions()
+    options.add_argument('-headless')
+    browser = webdriver.Firefox(executable_path=gecko_driver, options=options)
+    return browser
 
-# 3. GO TO JOBS.BG
 
-gecko_driver = 'C:\\geckodriver.exe'
-options = webdriver.FirefoxOptions()
-options.add_argument('-headless')
-browser = webdriver.Firefox(executable_path=gecko_driver, options=options)
-browser.get('http://jobs.bg')
-# TO DO - open file
+def get_data_for_techs():
+    browser = initiate_web_driver()
+    tech_obj_list = language_object_creation()
 
-for town in range(1):
-    for obj_from_tech_list in tech_obj_list:
-        open_keyword_tab = browser.find_element_by_xpath(
-            "/html/body/table[2]/tbody/tr/td/table[2]/tbody/tr/td[1]/form/table/tbody/tr[7]/td/a/span[1]")
-        open_keyword_tab.click()
-        keyword_tab = browser.find_element_by_xpath('//*[@id="keyword"]')
-        keyword_tab.click()
-        input_keyword_tab = obj_from_tech_list.search_term()
-        keyword_tab.send_keys(input_keyword_tab)
-        add_keyword_button = browser.find_element_by_xpath('//*[@id="addKeywordLink"]')
-        add_keyword_button.click()
-        site_search_button = browser.find_element_by_xpath(
-            '/html/body/table[2]/tbody/tr/td/table[2]/tbody/tr/td[1]/form/table/tbody/tr[12]/td/a')
-        browser.implicitly_wait(1)
-        site_search_button.click()
-        try:
-            pop_up_no_button = browser.find_element_by_xpath(
-                '/html/body/table[2]/tbody/tr/td/table[2]/tbody/tr/td[1]/form/table/tbody/tr[12]/td/div/div['
-                '2]/center/table/tbody/tr/td[2]/a')
-            pop_up_no_button.click()
-        except:
-            pass
-        search_result_count = browser.find_element_by_css_selector(
-            "#search_results_div > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > "
-            "table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(1)")
-        result_text = search_result_count.text.split()
-        obj_from_tech_list.add_to_city("all", int(result_text[-1]))
-        browser.get('http://jobs.bg')
+    for town in range(1):
+        for obj_from_tech_list in tech_obj_list:
+            if town != "all":
+                pass
+            else:
+                pass
+            browser.get('http://jobs.bg')
+            open_keyword_tab = browser.find_element_by_xpath(
+                "/html/body/table[2]/tbody/tr/td/table[2]/tbody/tr/td[1]/form/table/tbody/tr[7]/td/a/span[1]")
+            open_keyword_tab.click()
+            keyword_tab = browser.find_element_by_xpath('//*[@id="keyword"]')
+            keyword_tab.click()
+            input_keyword_tab = obj_from_tech_list.search_term()
+            keyword_tab.send_keys(input_keyword_tab)
+            add_keyword_button = browser.find_element_by_xpath('//*[@id="addKeywordLink"]')
+            add_keyword_button.click()
+            site_search_button = browser.find_element_by_xpath(
+                '/html/body/table[2]/tbody/tr/td/table[2]/tbody/tr/td[1]/form/table/tbody/tr[12]/td/a')
+            browser.implicitly_wait(1)
+            site_search_button.click()
+            try:
+                pop_up_no_button = browser.find_element_by_xpath(
+                    '/html/body/table[2]/tbody/tr/td/table[2]/tbody/tr/td[1]/form/table/tbody/tr[12]/td/div/div['
+                    '2]/center/table/tbody/tr/td[2]/a')
+                pop_up_no_button.click()
+            except:
+                pass
+            search_result_count = browser.find_element_by_css_selector(
+                "#search_results_div > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > "
+                "table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(1)")
+            result_text = search_result_count.text.split()
+            obj_from_tech_list.add_to_city("all", int(result_text[-1]))
+            browser.get('http://jobs.bg')
 
-browser.quit()
-for obj_to_print in tech_obj_list:
-    print(f"{obj_to_print.__class__.__name__}: {obj_to_print.all}")
-end_time = time()
-print(f"The program finished in {(end_time - start_time) // 60:.0f}"
-      f" minutes and {((end_time - start_time) % 60):.0f} seconds.")
+    browser.quit()
+    print_results(tech_obj_list)
+
+
+def print_results(tech_obj_list: list):
+    for obj_to_print in tech_obj_list:
+        print(f"{obj_to_print.__class__.__name__}: {obj_to_print.all}")
+
+
+def main():
+    start_time = time()
+    get_data_for_techs()
+    end_time = time()
+    print(f"The program finished in {(end_time - start_time) // 60:.0f}"
+          f" minutes and {((end_time - start_time) % 60):.0f} seconds.")
+
+
+if __name__ == "__main__":
+    main()
