@@ -12,7 +12,7 @@ The goal is to have a rough approximation of techs demand.
 5. Create file with the data
 
 """
-
+import csv
 from time import time
 from selenium import webdriver
 
@@ -22,10 +22,6 @@ class SoftTech:
         self.all = 0
         self.sofia = 0
         self.plovdiv = 0
-        self.varna = 0
-        self.burgas = 0
-        self.stara_zagora = 0
-        self.ruse = 0
 
     def add_to_city(self, city: str, value: int):
         if city == "all":
@@ -34,14 +30,6 @@ class SoftTech:
             self.sofia += value
         elif city == "plovdiv":
             self.plovdiv += value
-        elif city == "varna":
-            self.varna += value
-        elif city == "burgas":
-            self.burgas += value
-        elif city == "stara zagora":
-            self.stara_zagora += value
-        elif city == "ruse":
-            self.ruse += value
 
 
 class Python(SoftTech):
@@ -109,7 +97,7 @@ class Python(SoftTech):
 
     @staticmethod
     def search_term():
-        return 'python'
+        return 'Python'
 
 
 class JavaScript(SoftTech):
@@ -141,7 +129,7 @@ class JavaScript(SoftTech):
 
     @staticmethod
     def search_term():
-        return 'javascript'
+        return 'JavaScript'
 
 
 class PHP(SoftTech):
@@ -164,7 +152,7 @@ class PHP(SoftTech):
 
     @staticmethod
     def search_term():
-        return 'php'
+        return 'PHP'
 
 
 class Java(SoftTech):
@@ -178,51 +166,31 @@ class Java(SoftTech):
 
     @staticmethod
     def search_term():
-        return 'java'
+        return 'Java'
 
 
 class CPlus(SoftTech):
     @staticmethod
     def search_term():
-        return 'c++'
+        return 'C++'
 
 
 class CSharp(SoftTech):
     @staticmethod
     def search_term():
-        return 'c#'
+        return 'C#'
 
 
 class Swift(SoftTech):
     @staticmethod
     def search_term():
-        return 'swift'
-
-
-class ObjectiveC(SoftTech):
-    @staticmethod
-    def search_term():
-        return 'objective c'
-
-
-class DotNet(SoftTech):
-    def __init__(self):
-        super().__init__()
-        self.aspnet = 0
-
-    def add_to_framework(self, frame: str, value: int):
-        if frame in "aspnet":
-            self.aspnet += value
-
-    @staticmethod
-    def search_term():
-        return '.net'
+        return 'Swift'
 
 
 class Rust(SoftTech):
     @staticmethod
     def search_term():
-        return 'rust'
+        return 'Rust'
 
 
 class Ruby(SoftTech):
@@ -236,37 +204,31 @@ class Ruby(SoftTech):
 
     @staticmethod
     def search_term():
-        return 'ruby'
+        return 'Ruby'
 
 
 class Kotlin(SoftTech):
     @staticmethod
     def search_term():
-        return 'kotlin'
+        return 'Kotlin'
 
 
 class TypeScript(SoftTech):
     @staticmethod
     def search_term():
-        return 'typescript'
+        return 'TypeScript'
 
 
 class CoffeeScript(SoftTech):
     @staticmethod
     def search_term():
-        return 'coffeescript'
+        return 'CoffeeScript'
 
 
 class Perl(SoftTech):
     @staticmethod
     def search_term():
-        return 'perl'
-
-
-class WebAssembly(SoftTech):
-    @staticmethod
-    def search_term():
-        return 'webassembly'
+        return 'Perl'
 
 
 class SQL(SoftTech):
@@ -298,184 +260,170 @@ class SQL(SoftTech):
 
     @staticmethod
     def search_term():
-        return 'sql'
+        return 'SQL'
 
 
 class HTML(SoftTech):
     @staticmethod
     def search_term():
-        return 'html'
+        return 'HTML'
 
 
 class CSS(SoftTech):
     @staticmethod
     def search_term():
-        return 'css'
+        return 'CSS'
 
 
 class Go(SoftTech):
     @staticmethod
     def search_term():
-        return 'golang'
-
-
-class Scala(SoftTech):
-    @staticmethod
-    def search_term():
-        return 'scala'
+        return 'Goland'
 
 
 class Haskell(SoftTech):
     @staticmethod
     def search_term():
-        return 'haskell'
+        return 'Haskel'
 
 
 class Erlang(SoftTech):
     @staticmethod
     def search_term():
-        return 'erlang'
+        return 'Erlang'
 
 
 class Elixir(SoftTech):
     @staticmethod
     def search_term():
-        return 'elixir'
+        return 'Elixir'
 
 
 class Matlab(SoftTech):
     @staticmethod
     def search_term():
-        return 'matlab'
+        return 'Matlab'
 
 
 class Groovy(SoftTech):
     @staticmethod
     def search_term():
-        return 'groovy'
+        return 'Groovy'
 
 
 class VisualBasic(SoftTech):
     @staticmethod
     def search_term():
-        return 'visual basic'
+        return 'Visual Basic'
 
 
 class Delphi(SoftTech):
     @staticmethod
     def search_term():
-        return 'delphi'
+        return 'Delphi'
 
 
 class Dart(SoftTech):
     @staticmethod
     def search_term():
-        return 'dart'
+        return 'Dart'
 
 
 class Julia(SoftTech):
     @staticmethod
     def search_term():
-        return 'julia'
+        return 'Julia'
 
 
 class Clojure(SoftTech):
     @staticmethod
     def search_term():
-        return 'clojure'
+        return 'Clojure'
 
 
 class VBA(SoftTech):
     @staticmethod
     def search_term():
-        return 'vba'
+        return 'VBA'
 
 
 class Bash(SoftTech):
     @staticmethod
     def search_term():
-        return 'bash'
+        return 'Bash'
 
 
 def language_object_creation():
     """Creates a list with object representations for each IT tech"""
-    technologies = ('python', 'javascript', 'php', 'java',
-                    'c++', 'c#', 'swift', 'objectivec', '.net',
-                    'rust', 'ruby', 'kotlin', 'typescript',
-                    'coffeescript', 'perl', 'webassembly', 'sql',
-                    'html', 'css', 'golang', 'scala',
-                    'haskell', 'erlang', 'elixir', 'matlab',
-                    'groovy', 'visual basic', 'delphi', 'dart',
-                    'julia', "clojure", 'vba', 'bash',)
+    technologies = ('Python', 'JavaScript', 'PHP',
+                    'C++', 'C#', 'Swift', 'Rust', 'Dart',
+                    'Ruby', 'Kotlin', 'Typescript',
+                    'CoffeeScript', 'Perl', 'SQL', 'Java',
+                    'HTML', 'CSS', 'Golang', 'Matlab',
+                    'Haskel', 'Erlang', 'Elixir',
+                    'Groovy', 'Visual Basic', 'Delphi',
+                    'Julia', "Clojure", 'VBA', 'Bash')
 
     tech_obj_list = []
     for tech in technologies:
         new_obj = None
-        if tech == "python":
+        if tech == "Python":
             new_obj = Python()
-        elif tech == 'javascript':
+        elif tech == 'JavaScript':
             new_obj = JavaScript()
-        elif tech == 'php':
+        elif tech == 'PHP':
             new_obj = PHP()
-        elif tech == 'java':
+        elif tech == 'Java':
             new_obj = Java()
-        elif tech == 'c++':
+        elif tech == 'C++':
             new_obj = CPlus()
-        elif tech == 'c#':
+        elif tech == 'C#':
             new_obj = CSharp()
-        elif tech == 'swift':
+        elif tech == 'Swift':
             new_obj = Swift()
-        elif tech == 'objectivec':
-            new_obj = ObjectiveC()
-        elif tech == '.net':
-            new_obj = DotNet()
-        elif tech == 'rust':
+        elif tech == 'Rust':
             new_obj = Rust()
-        elif tech == 'rugy':
+        elif tech == 'Ruby':
             new_obj = Ruby()
-        elif tech == 'kotlin':
+        elif tech == 'Kotlin':
             new_obj = Kotlin()
-        elif tech == 'typescript':
+        elif tech == 'TypeScript':
             new_obj = TypeScript()
-        elif tech == 'coffeescript':
+        elif tech == 'CoffeeScript':
             new_obj = CoffeeScript()
-        elif tech == 'perl':
+        elif tech == 'Perl':
             new_obj = Perl()
-        elif tech == 'webassembly':
-            new_obj = WebAssembly()
-        elif tech == 'sql':
+        elif tech == 'SQL':
             new_obj = SQL()
-        elif tech == 'html':
+        elif tech == 'HTML':
             new_obj = HTML()
-        elif tech == 'css':
+        elif tech == 'CSS':
             new_obj = CSS()
-        elif tech == 'golang':
+        elif tech == 'Golang':
             new_obj = Go()
-        elif tech == 'scala':
-            new_obj = Scala()
-        elif tech == 'haskel':
+        elif tech == 'Haskel':
             new_obj = Haskell()
-        elif tech == 'erlang':
+        elif tech == 'Erlang':
             new_obj = Erlang()
-        elif tech == 'elixir':
+        elif tech == 'Elixir':
             new_obj = Elixir()
-        elif tech == 'matlab':
+        elif tech == 'Matlab':
             new_obj = Matlab()
-        elif tech == 'groovy':
+        elif tech == 'Groovy':
             new_obj = Groovy()
-        elif tech == 'visual basic':
+        elif tech == 'Visual Basic':
             new_obj = VisualBasic()
-        elif tech == 'delphi':
+        elif tech == 'Delphi':
             new_obj = Delphi()
-        elif tech == 'dart':
+        elif tech == 'Dart':
             new_obj = Dart()
-        elif tech == 'julia':
+        elif tech == 'Julia':
             new_obj = Julia()
-        elif tech == 'clojure':
+        elif tech == 'Clojure':
             new_obj = Clojure()
-        elif tech == 'vba':
+        elif tech == 'VBA':
             new_obj = VBA()
-        elif tech == 'bash':
+        elif tech == 'Bash':
             new_obj = Bash()
         if new_obj is not None:
             tech_obj_list.append(new_obj)
@@ -492,20 +440,23 @@ def initiate_web_driver():
 
 
 def get_data_for_techs():
-    """Calls up the driver initiation and language object creation
+    """Calls 'initiate_web_driver' and 'language_object_creation'
      functions, then instructs the driver to go to jobs.bg and
-     loop over each city and IT tech. Calls the print_data function"""
-    locations = ("all", "sofia", 'plovdiv')
+     loop over each city and IT tech. Creates csv with a function call
+     to 'create_csv_file_with_results' and prints data with 'print_data' call"""
+    locations = ({'all': 'Всички'}, {'sofia': "София"}, {'plovdiv': 'Пловдив'})
     browser = initiate_web_driver()
     tech_obj_list = language_object_creation()
 
     for location in locations:
+        location_bg = list(location.items())
         for obj_from_tech_list in tech_obj_list:
             browser.get('http://jobs.bg')
-            if not location == "all":
-                pass
-            else:
-                pass
+
+            city_tab = browser.find_element_by_xpath('//*[@id="location"]')
+            city_tab.click()
+            city_tab.send_keys(location_bg[0][1])
+
             open_keyword_tab = browser.find_element_by_xpath(
                 "/html/body/table[2]/tbody/tr/td/table[2]/tbody/tr/td[1]/form/table/tbody/tr[7]/td/a/span[1]")
             open_keyword_tab.click()
@@ -530,17 +481,30 @@ def get_data_for_techs():
                 "#search_results_div > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > "
                 "table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(1)")
             result_text = search_result_count.text.split()
-            obj_from_tech_list.add_to_city(location, int(result_text[-1]))
+            obj_from_tech_list.add_to_city(location_bg[0][0], int(result_text[-1]))
             browser.get('http://jobs.bg')
 
     browser.quit()
+    create_csv_file_with_results(tech_obj_list)
     print_results(tech_obj_list)
 
 
 def print_results(tech_obj_list: list):
     """Print the lists with results produced by the get_data_for_techs function"""
     for obj_to_print in tech_obj_list:
-        print(f"{obj_to_print.__class__.__name__}: {obj_to_print.all}")
+        print(f"{obj_to_print.search_term()} has the following number of mentions in job listings:")
+        print(f" - BG total: {obj_to_print.all} mentions.")
+        print(f" - Sofia: {obj_to_print.sofia} mentions.")
+        print(f" - Plovdiv: {obj_to_print.plovdiv} mentions.")
+        print("-" * 65)
+
+
+def create_csv_file_with_results(tech_obj_list: list):
+    with open('C:\\Users\\Huskarl\\Desktop\\Tech_Mentions_Jobs_August_2019.csv', "w", newline='') as filename:
+        file_write = csv.writer(filename, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        file_write.writerow(['Tech', 'BG Total', 'Sofia', 'Plovdiv'])
+        for obj in tech_obj_list:
+            file_write.writerow([str(obj.search_term()), obj.all, obj.sofia, obj.plovdiv])
 
 
 def main():
