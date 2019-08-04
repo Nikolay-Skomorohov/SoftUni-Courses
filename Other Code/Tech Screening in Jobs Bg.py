@@ -3,17 +3,20 @@ Program: Tech Screening in Jobs Bg.py
 Author: Nikolay Skomorohov
 
 The script searches jobs.bg for the numbers of mentions per software technology.
-The goal is to have a rough approximation of techs demand.
+The goal is to have a rough(!) approximation of techs relevance in the jobs market.
+Results should be takes with a grain of salt, the jobs.bg search engine is underwhelming.
+Quantifying actual demand is much harder!
 
 1. Imports and class creation
-2. Power up selenium driver
-3. Create IT class instances
-4. Go to jobs.bg and loop over cities and techs
-5. Create file with the data
+2. Power up selenium driver with 'initiate_web_driver()'
+3. Create IT class instances with 'language_object_creation()'
+4. Go to jobs.bg and loop over cities and techs with 'get_data_for_techs()'
+5. Create file with the data with 'create_csv_file_with_results()'
+6. Prints the results with 'print_results()'
 
 """
 import csv
-from time import time
+import time
 from selenium import webdriver
 
 
@@ -500,7 +503,8 @@ def print_results(tech_obj_list: list):
 
 
 def create_csv_file_with_results(tech_obj_list: list):
-    with open('C:\\Users\\Huskarl\\Desktop\\Tech_Mentions_Jobs_August_2019.csv', "w", newline='') as filename:
+    current_date = time.strftime("%d_%b_%Y")
+    with open(f'Tech_Mentions_JobsBG_{current_date}.csv', "w", newline='') as filename:
         file_write = csv.writer(filename, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
         file_write.writerow(['Tech', 'BG Total', 'Sofia', 'Plovdiv'])
         for obj in tech_obj_list:
@@ -508,9 +512,9 @@ def create_csv_file_with_results(tech_obj_list: list):
 
 
 def main():
-    start_time = time()
+    start_time = time.time()
     get_data_for_techs()
-    end_time = time()
+    end_time = time.time()
     print(f"The program finished in {(end_time - start_time) // 60:.0f}"
           f" minutes and {((end_time - start_time) % 60):.0f} seconds.")
 
