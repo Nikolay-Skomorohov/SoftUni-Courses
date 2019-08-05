@@ -36,137 +36,72 @@ class SoftTech:
 
 
 class Python(SoftTech):
-    def __init__(self):
-        super().__init__()
-        self.django = 0
-        self.flask = 0
-        self.pandas = 0
-        self.tensor_flow = 0
-        self.bottle = 0
-        self.numpy = 0
-        self.pyramid = 0
-        self.web2py = 0
-        self.cherrypy = 0
-        self.tornado = 0
-        self.pylons = 0
-        self.turbogears = 0
-        self.keras = 0
-        self.pytorch = 0
-        self.theano = 0
-        self.matplotlib = 0
-        self.scikit = 0
-        self.scrapy = 0
-        self.pygame = 0
-
-    def add_to_framework(self, frame: str, value: int):
-        if frame in "django":
-            self.django += value
-        elif frame in "flask":
-            self.flask += value
-        elif frame in "pandas":
-            self.pandas += value
-        elif frame in "tensor-flow, tensorflow":
-            self.tensor_flow += value
-        elif frame in "bottle":
-            self.bottle += value
-        elif frame in "numpy":
-            self.numpy += value
-        elif frame in "pyramid":
-            self.pyramid += value
-        elif frame in "web2py":
-            self.web2py += value
-        elif frame in "cherrypy":
-            self.cherrypy += value
-        elif frame in "tornado":
-            self.tornado += value
-        elif frame in "pylons":
-            self.pylons += value
-        elif frame in "turbogears, turbo-gears":
-            self.turbogears += value
-        elif frame in "keras":
-            self.keras += value
-        elif frame in "pytorch":
-            self.pytorch += value
-        elif frame in "theano":
-            self.theano += value
-        elif frame in "matplotlib":
-            self.matplotlib += value
-        elif frame in "scikit":
-            self.scikit += value
-        elif frame in "scrapy":
-            self.scrapy += value
-        elif frame in "pygame":
-            self.pygame += value
-
     @staticmethod
     def search_term():
         return 'Python'
 
 
+class Django(SoftTech):
+    @staticmethod
+    def search_term():
+        return 'Django'
+
+
+class Flask(SoftTech):
+    @staticmethod
+    def search_term():
+        return 'Flask'
+
+
+class Scrapy(SoftTech):
+    @staticmethod
+    def search_term():
+        return 'Scrapy'
+
+
 class JavaScript(SoftTech):
-    def __init__(self):
-        super().__init__()
-        self.jquery = 0
-        self.angular = 0
-        self.react = 0
-        self.vue = 0
-        self.express = 0
-        self.nodejs = 0
-        self.ember = 0
-
-    def add_to_framework(self, frame: str, value: int):
-        if frame in "jquery":
-            self.jquery += value
-        elif frame in "angular.js":
-            self.angular += value
-        elif frame in "react.js":
-            self.react += value
-        elif frame in "vue.js":
-            self.vue += value
-        elif frame in "express":
-            self.express += value
-        elif frame in "node.js":
-            self.nodejs += value
-        elif frame in "ember":
-            self.ember += value
-
     @staticmethod
     def search_term():
         return 'JavaScript'
 
 
+class React(SoftTech):
+    @staticmethod
+    def search_term():
+        return 'React'
+
+
+class Angular(SoftTech):
+    @staticmethod
+    def search_term():
+        return 'Angular'
+
+
+class Vue(SoftTech):
+    @staticmethod
+    def search_term():
+        return 'Vue'
+
+
+class Node(SoftTech):
+    @staticmethod
+    def search_term():
+        return 'Node'
+
+
+class JQuery(SoftTech):
+    @staticmethod
+    def search_term():
+        return 'jQuery'
+
+
 class PHP(SoftTech):
-    def __init__(self):
-        super().__init__()
-        self.symfony = 0
-        self.laravel = 0
-        self.drupal = 0
-        self.wordpress = 0
-
-    def add_to_framework(self, frame: str, value: int):
-        if frame in "symfony":
-            self.symfony += value
-        elif frame in "laravel":
-            self.laravel += value
-        elif frame in "drupal":
-            self.drupal += value
-        elif frame in "wordpress":
-            self.wordpress += value
-
     @staticmethod
     def search_term():
         return 'PHP'
 
 
 class Java(SoftTech):
-    def __init__(self):
-        super().__init__()
-        self.spring = 0
-
-    def add_to_framework(self, frame: str, value: int):
-        if frame in "spring":
-            self.spring += value
-
     @staticmethod
     def search_term():
         return 'Java'
@@ -197,14 +132,6 @@ class Rust(SoftTech):
 
 
 class Ruby(SoftTech):
-    def __init__(self):
-        super().__init__()
-        self.ruby_on_rails = 0
-
-    def add_to_framework(self, frame: str, value: int):
-        if frame in "ruby on rails":
-            self.ruby_on_rails += value
-
     @staticmethod
     def search_term():
         return 'Ruby'
@@ -222,12 +149,6 @@ class TypeScript(SoftTech):
         return 'TypeScript'
 
 
-class CoffeeScript(SoftTech):
-    @staticmethod
-    def search_term():
-        return 'CoffeeScript'
-
-
 class Perl(SoftTech):
     @staticmethod
     def search_term():
@@ -235,35 +156,33 @@ class Perl(SoftTech):
 
 
 class SQL(SoftTech):
-    def __init__(self):
-        super().__init__()
-        self.mysql = 0
-        self.postgresql = 0
-        self.elasticsearch = 0
-        self.mongodb = 0
-        self.sqlite = 0
-        self.sqlalchemy = 0
-        self.mariadb = 0
-
-    def add_to_framework(self, frame: str, value: int):
-        if frame in "mysql":
-            self.mysql += value
-        elif frame in "postgresql":
-            self.postgresql += value
-        elif frame in "elasticsearch":
-            self.elasticsearch += value
-        elif frame in "mongodb":
-            self.mongodb += value
-        elif frame in "sqlite":
-            self.sqlite += value
-        elif frame in "sqlalchemy":
-            self.sqlalchemy += value
-        elif frame in "mariadb":
-            self.mariadb += value
-
     @staticmethod
     def search_term():
         return 'SQL'
+
+
+class MySQL(SoftTech):
+    @staticmethod
+    def search_term():
+        return 'MySQL'
+
+
+class NoSQL(SoftTech):
+    @staticmethod
+    def search_term():
+        return 'NoSQL'
+
+
+class PostgreSQL(SoftTech):
+    @staticmethod
+    def search_term():
+        return 'PostgreSQL'
+
+
+class MongoDB(SoftTech):
+    @staticmethod
+    def search_term():
+        return 'MongoDB'
 
 
 class HTML(SoftTech):
@@ -356,24 +275,61 @@ class Bash(SoftTech):
         return 'Bash'
 
 
+class GraphQL(SoftTech):
+    @staticmethod
+    def search_term():
+        return 'GraphQL'
+
+
 def language_object_creation():
     """Creates a list with object representations for each IT tech"""
-    technologies = ('Python', 'JavaScript', 'PHP',
-                    'C++', 'C#', 'Swift', 'Rust', 'Dart',
-                    'Ruby', 'Kotlin', 'Typescript',
-                    'CoffeeScript', 'Perl', 'SQL', 'Java',
-                    'HTML', 'CSS', 'Golang', 'Matlab',
-                    'Haskel', 'Erlang', 'Elixir',
-                    'Groovy', 'Visual Basic', 'Delphi',
-                    'Julia', "Clojure", 'VBA', 'Bash')
+    technologies = ('Python', 'Django', 'Flask', 'Scrapy', 'JavaScript',
+                    'React', 'Angular', 'Vue', 'Node', 'jQuery', 'GraphQL',
+                    'SQL', 'NoSQL', 'MySQL', 'PostreSQL', 'MongoDB', 'HTML',
+                    'CSS', 'PHP', 'Java', 'C++', 'C#', 'Swift', 'TypeScript',
+                    'Rust', 'Ruby', 'Kotlin', 'Golang', 'Dart', 'Julia',
+                    'Haskel', 'Erlang', 'Elixir', 'Clojure', 'Groovy', 'VBA',
+                    'Visual Basic', 'Delphi', 'Perl', 'Matlab', 'Bash')
 
     tech_obj_list = []
     for tech in technologies:
         new_obj = None
         if tech == "Python":
             new_obj = Python()
+        elif tech == 'Django':
+            new_obj = Django()
+        elif tech == 'Flask':
+            new_obj = Flask()
+        elif tech == 'Scrapy':
+            new_obj = Scrapy()
         elif tech == 'JavaScript':
             new_obj = JavaScript()
+        elif tech == 'React':
+            new_obj = React()
+        elif tech == 'Angular':
+            new_obj = Angular()
+        elif tech == 'Vue':
+            new_obj = Vue()
+        elif tech == 'Node':
+            new_obj = Node()
+        elif tech == 'jQuery':
+            new_obj = JQuery()
+        elif tech == 'GraphQL':
+            new_obj = GraphQL()
+        elif tech == 'SQL':
+            new_obj = SQL()
+        elif tech == 'NoSQL':
+            new_obj = NoSQL()
+        elif tech == 'MySQL':
+            new_obj = MySQL()
+        elif tech == 'PostreSQL':
+            new_obj = PostgreSQL()
+        elif tech == 'MongoDB':
+            new_obj = MongoDB()
+        elif tech == 'HTML':
+            new_obj = HTML()
+        elif tech == 'CSS':
+            new_obj = CSS()
         elif tech == 'PHP':
             new_obj = PHP()
         elif tech == 'Java':
@@ -384,24 +340,16 @@ def language_object_creation():
             new_obj = CSharp()
         elif tech == 'Swift':
             new_obj = Swift()
+        elif tech == 'TypeScript':
+            new_obj = TypeScript()
         elif tech == 'Rust':
             new_obj = Rust()
         elif tech == 'Ruby':
             new_obj = Ruby()
         elif tech == 'Kotlin':
             new_obj = Kotlin()
-        elif tech == 'TypeScript':
-            new_obj = TypeScript()
-        elif tech == 'CoffeeScript':
-            new_obj = CoffeeScript()
         elif tech == 'Perl':
             new_obj = Perl()
-        elif tech == 'SQL':
-            new_obj = SQL()
-        elif tech == 'HTML':
-            new_obj = HTML()
-        elif tech == 'CSS':
-            new_obj = CSS()
         elif tech == 'Golang':
             new_obj = Go()
         elif tech == 'Haskel':
@@ -416,6 +364,8 @@ def language_object_creation():
             new_obj = Groovy()
         elif tech == 'Visual Basic':
             new_obj = VisualBasic()
+        elif tech == 'VBA':
+            new_obj = VBA()
         elif tech == 'Delphi':
             new_obj = Delphi()
         elif tech == 'Dart':
@@ -424,8 +374,6 @@ def language_object_creation():
             new_obj = Julia()
         elif tech == 'Clojure':
             new_obj = Clojure()
-        elif tech == 'VBA':
-            new_obj = VBA()
         elif tech == 'Bash':
             new_obj = Bash()
         if new_obj is not None:
@@ -455,7 +403,6 @@ def get_data_for_techs():
         location_bg = list(location.items())
         for obj_from_tech_list in tech_obj_list:
             browser.get('http://jobs.bg')
-
             city_tab = browser.find_element_by_xpath('//*[@id="location"]')
             city_tab.click()
             city_tab.send_keys(location_bg[0][1])
