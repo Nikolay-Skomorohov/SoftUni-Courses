@@ -15,8 +15,7 @@ class Book:
             self.__author = value
         elif value.split()[1][0].isdigit():
             raise Exception("Author not valid!")
-        else:
-            self.__author = value
+        self.__author = value
 
     @property
     def title(self):
@@ -26,8 +25,7 @@ class Book:
     def title(self, value):
         if len(value) < 3:
             raise Exception("Title not valid!")
-        else:
-            self.__title = value
+        self.__title = value
 
     @property
     def price(self):
@@ -47,16 +45,9 @@ class Book:
 
 
 class GoldenEditionBook(Book):
-    @property
-    def price(self):
-        return self.__price
-
-    @price.setter
-    def price(self, value):
-        if value <= 0:
-            raise Exception("Price not valid!")
-        else:
-            self.__price = value * 1.3
+    def __init__(self, title: str, author: str, price: float):
+        Book.__init__(self, title, author, price)
+        self.price *= price * 1.3
 
 
 new_author = input()
