@@ -14,16 +14,16 @@ class HelloView(tk.Frame):
         name_entry = ttk.Entry(self, textvariable=self.name)
         ch_button = ttk.Button(self, text='Change', command=self.on_change)
         hello_label = ttk.Label(self, textvariable=self.hello_string,
-                                font=("TkDefaultFont", 64), wraplength=600)
+                                font=("TkDefaultFont", 32), wraplength=600)
         name_label.grid(row=0, column=0, sticky=tk.W)
         name_entry.grid(row=0, column=1, sticky=(tk.W + tk.E))
-        ch_button.grid(row=0, column=2, sticky=tk.E)
-        hello_label.grid(row=1, column=0, columnspan=3)
+        ch_button.grid(row=1, column=0, sticky=(tk.W + tk.E), columnspan=3)
+        hello_label.grid(row=2, column=0, columnspan=3)
         self.columnconfigure(1, weight=1)
 
     def on_change(self):
         if self.name.get().strip():
-            self.hello_string.set("Hello " + self.name.get())
+            self.hello_string.set(self.name.get())
         else:
             self.hello_string.set("Hello World")
 
@@ -33,7 +33,7 @@ class MyApplication(tk.Tk):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.title("Hello Tkinter")
+        self.title("Boni Bamboni")
         self.geometry("800x600")
         self.resizable(width=True, height=True)
         HelloView(self).grid(sticky=(tk.E + tk.W + tk.N + tk.S))

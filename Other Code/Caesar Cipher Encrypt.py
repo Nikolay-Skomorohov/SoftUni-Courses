@@ -1,4 +1,4 @@
-'''
+"""
 Program: newEncrypt.py
 Author: NSS
 
@@ -11,7 +11,7 @@ Program that encypts a numeric value via Caesar cipher and bit shift.
      user_convert
 3. Print the result
      user_encrypt
-'''
+"""
 
 # User input - integer
 user_number = input("Enter a text for encryption: ")
