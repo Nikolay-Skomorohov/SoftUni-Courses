@@ -55,22 +55,30 @@ def stock(products_list: list):
         print('No products stocked')
 
 
-def create_product(input_data: list, products_list: list):
-    if all(product for product in products_list
-           if product.name != input_data[0] and product.type_ != input_data[1]):
-        add_new = Product(*input_data)
-        products_list.append(add_new)
-    else:
-        change = next(product for product in products_list
-                      if (product.name == input_data[0]) and (product.type_ == input_data[1]))
-        change.price = input_data[2]
-        change.quantity = input_data[3]
+def create_product(input_data: list):
+    add_new = Product(name=input_data[0],
+                      type_=input_data[1],
+                      price=float(input_data[2]),
+                      quantity=int(input_data[3]))
+    return add_new
 
+
+def change_product(input_data: list, product: object):
+    product.price = float(input_data[2])
+    product.quantity = int((input_data[3]))
+
+
+def check_product(input_data: list, products_list: list):
+    if products_list:
         for product in products_list:
             if product.name == input_data[0] and product.type_ == input_data[1]:
-                product.price = float(input_data[2])
-                product.quantity = int((input_data[3]))
-    return products_list
+                change_product(input_data, product)
+                return products_list
+        products_list.append(create_product(input_data))
+        return products_list
+    else:
+        products_list.append(create_product(input_data))
+        return products_list
 
 
 def main():
@@ -88,7 +96,7 @@ def main():
         elif input_command[0] == 'exit':
             exit()
         else:
-            products_list = create_product(input_command, products_list)
+            products_list = check_product(input_command, products_list)
 
 
 if __name__ == "__main__":
