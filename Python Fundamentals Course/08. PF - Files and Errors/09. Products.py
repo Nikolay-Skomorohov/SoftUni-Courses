@@ -5,40 +5,91 @@ class Product:
         self.price = price
         self.quantity = quantity
 
+    def __str__(self):
+        return f"{self.type_}, Product: {self.name}\nPrice: ${self.price:.2f}, Amount Left: {self.quantity}"
 
-products_list = []
 
-while True:
-    input_command = input().split()
+def check_for_db():
+    stocked_list = []
+    try:
+        with open('D:\\Testy\\products.txt', 'r') as stock_file:
+            stock_info = stock_file.readlines()
+            for stocked_product in stock_info:
+                info = stocked_product.split()
+                new_product = Product(name=info[0], type_=info[1], price=float(info[2]), quantity=int(info[3]))
+                stocked_list.append(new_product)
 
-    if input_command[0] == 'analyze':
-        pass
+            return stocked_list
+    except FileNotFoundError:
+        return stocked_list
 
-    elif input_command[0] == 'sales':
-        pass
 
-    elif input_command[0] == 'stock':
-        if not products_list == []:
-            with open('D:\\Testy\\products.txt', 'w') as output_file:
-                for pr in products_list:
-                    output_file.write(f'{pr.name} {pr.type} {pr.price} {pr.quantity}')
-        else:
-            print('No products stocked')
+def analyze():
+    list_to_analyze = check_for_db()
+    if not list_to_analyze:
+        print("No products stocked")
+        return
+    list_to_analyze.sort(key=lambda x: x.type_)
+    for item in list_to_analyze:
+        print(item)
 
-    elif input_command[0] == 'exit':
-        pass
 
+def sales(products_list: list):
+    product_categories = {'Domestics': 0, 'Electronics': 0, 'Food': 0}
+    for key in product_categories.keys():
+        for prod_obj in products_list:
+            if prod_obj.type_ == key:
+                product_categories[key] += float(prod_obj.price) * int(prod_obj.quantity)
+
+    for category, value in sorted(product_categories.items(), key=lambda kv: kv[1], reverse=True):
+        if value > 0:
+            print(f"{category}: ${value:.2f}")
+
+
+def stock(products_list: list):
+    if not products_list == []:
+        with open('D:\\Testy\\products.txt', 'w') as output_file:
+            for pr in products_list:
+                output_file.write(f'{pr.name} {pr.type_} {float(pr.price):.2f} {int(pr.quantity)}\n')
     else:
-        if all(product for product in products_list
-               if product.name != input_command[0] and product.type != input_command[1]):
-            Product(*input_command)
-        else:
-            change = next(product for product in products_list
-                          if (product.name == input_command[0]) and (product.type_ == input_command[1]))
-            change.price = input_command[2]
-            change.quantity = input_command[3]
+        print('No products stocked')
+
+
+def create_product(input_data: list, products_list: list):
+    if all(product for product in products_list
+           if product.name != input_data[0] and product.type_ != input_data[1]):
+        add_new = Product(*input_data)
+        products_list.append(add_new)
+    else:
+        change = next(product for product in products_list
+                      if (product.name == input_data[0]) and (product.type_ == input_data[1]))
+        change.price = input_data[2]
+        change.quantity = input_data[3]
 
         for product in products_list:
-            if product.name == input_command[0] and product.type_ == input_command[1]:
-                product.price = input_command[2]
-                product.quantity = input_command[3]
+            if product.name == input_data[0] and product.type_ == input_data[1]:
+                product.price = float(input_data[2])
+                product.quantity = int((input_data[3]))
+    return products_list
+
+
+def main():
+    products_list = []
+    stocked_list = check_for_db()
+    products_list.extend(stocked_list)
+    while True:
+        input_command = input().split()
+        if input_command[0] == 'analyze':
+            analyze()
+        elif input_command[0] == 'sales':
+            sales(products_list)
+        elif input_command[0] == 'stock':
+            stock(products_list)
+        elif input_command[0] == 'exit':
+            exit()
+        else:
+            products_list = create_product(input_command, products_list)
+
+
+if __name__ == "__main__":
+    main()
