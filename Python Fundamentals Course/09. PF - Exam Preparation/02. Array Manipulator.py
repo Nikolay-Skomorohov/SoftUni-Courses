@@ -1,6 +1,10 @@
 def exchange_command(integers_list: list, index: int):
     try:
-        if index > len(integers_list) or len(integers_list) == 1:
+        if index > len(integers_list):
+            raise IndexError
+        if len(integers_list) == 1 and index != 0:
+            raise IndexError
+        if index < 0:
             raise IndexError
         first_half = integers_list[:index + 1]
         second_half = integers_list[index + 1:]
@@ -16,16 +20,32 @@ def max_command(integers_list: list, even_odd: str):
         try:
             evens_list = list(filter(lambda x: x % 2 == 0, integers_list))
             max_even = max(evens_list)
-            max_even = integers_list.index(max_even)
-            print(max_even)
+            max_list = evens_list.count(max_even)
+            if max_list > 1:
+                right_index = 0
+                for item in range(len(integers_list)):
+                    if integers_list[item] == max(evens_list):
+                        right_index = item
+                return print(right_index)
+            else:
+                max_even = integers_list.index(max_even)
+            return print(max_even)
         except ValueError:
             print("No matches")
     else:
         try:
             odds_list = list(filter(lambda x: x % 2 == 1, integers_list))
             max_odd = max(odds_list)
-            max_odd = integers_list.index(max_odd)
-            print(max_odd)
+            max_list = odds_list.count(max_odd)
+            if max_list > 1:
+                right_index = 0
+                for item in range(len(integers_list)):
+                    if integers_list[item] == max(odds_list):
+                        right_index = item
+                return print(right_index)
+            else:
+                max_odd = integers_list.index(max_odd)
+                return print(max_odd)
         except ValueError:
             print('No matches')
 
@@ -35,16 +55,32 @@ def min_command(integers_list: list, even_odd: str):
         try:
             evens_list = list(filter(lambda x: x % 2 == 0, integers_list))
             min_even = min(evens_list)
-            min_even = integers_list.index(min_even)
-            print(min_even)
+            min_list = evens_list.count(min_even)
+            if min_list > 1:
+                right_index = 0
+                for item in range(len(integers_list)):
+                    if integers_list[item] == min(evens_list):
+                        right_index = item
+                return print(right_index)
+            else:
+                min_even = integers_list.index(min_even)
+                return print(min_even)
         except ValueError:
             print('No matches')
     else:
         try:
             odds_list = list(filter(lambda x: x % 2 == 1, integers_list))
             min_odd = min(odds_list)
-            min_odd = integers_list.index(min_odd)
-            print(min_odd)
+            min_list = odds_list.count(min_odd)
+            if min_list > 1:
+                right_index = 0
+                for item in range(len(integers_list)):
+                    if integers_list[item] == min(odds_list):
+                        right_index = item
+                return print(right_index)
+            else:
+                min_even = integers_list.index(min_odd)
+                return print(min_even)
         except ValueError:
             print('No matches')
 
@@ -82,14 +118,14 @@ def last_command(integers_list: list, count: int, even_odd: str):
         else:
             return print(last_indexes[:count])
     else:
-        last_indexes = [x for x in integers_list if x % 2 == 1][:count]
+        last_indexes = [x for x in integers_list if x % 2 == 1]
         if not last_indexes:
             return print("[]")
         elif len(last_indexes) < count:
             print(last_indexes)
         else:
             to_print = []
-            for count_index in range(1, count + 1):
+            for count_index in range(count, 0, -1):
                 to_print.append(last_indexes[-count_index])
             return print(to_print)
 
