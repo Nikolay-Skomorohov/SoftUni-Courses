@@ -3,8 +3,8 @@ import re
 
 def decrypt_command(team1: str, team2: str, key: str):
     new_command = []
-    pattern = rf"(.*?)(?P<key1>({key})+)(?P<name>.+?)(?P<key2>{key}+)(.*)"
     try:
+        pattern = rf"(.*?)(?P<key1>({re.escape(key)})+)(?P<name>.+?)(?P<key2>({re.escape(key)})+)(.*)"
         team_1 = re.search(pattern, team1).group('name')
         new_command.append(team_1[::-1].upper())
         team_2 = re.search(pattern, team2).group('name')
@@ -22,7 +22,6 @@ def decrypt_command(team1: str, team2: str, key: str):
 
 def print_standing(score_data_dict: dict):
     print("League standings:")
-    # data_dict_sorted = sorted(data_dict.items(), key=lambda x: x[1])
     counter = 1
     for value in sorted(score_data_dict.items(), key=lambda x: (-x[1], x)):
         print(f"{counter}. {value[0]} {value[1]}")
