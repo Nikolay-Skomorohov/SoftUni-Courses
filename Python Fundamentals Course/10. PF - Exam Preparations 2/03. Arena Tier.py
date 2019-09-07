@@ -18,6 +18,21 @@ def main():
             elif " vs " in command:
                 command = command.split(" vs ")
                 if command[0] in gladiator_dict.keys() and command[1] in gladiator_dict.keys():
+                    for skill in gladiator_dict[command[0]].keys():
+                        if any(x == skill for x in gladiator_dict[command[1]].keys()):
+                            gladiator1_points = 0
+                            for skl in gladiator_dict[command[0]].keys():
+                                gladiator1_points += gladiator_dict[command[0]][skl]
+                            gladiator2_points = 0
+                            for skl in gladiator_dict[command[1]].keys():
+                                gladiator2_points += gladiator_dict[command[1]][skl]
+
+                            if gladiator1_points > gladiator2_points:
+                                del gladiator_dict[command[1]]
+                            elif gladiator1_points < gladiator2_points:
+                                del gladiator_dict[command[0]]
+
+    print(gladiator_dict)
 
 
 if __name__ == "__main__":
