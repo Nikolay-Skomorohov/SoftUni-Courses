@@ -126,7 +126,6 @@ def print_result(persons_list: list):
 
 def main():
     persons_list = input_for_tickets(initial_cards_input())
-
     print_result(persons_list)
 
 
