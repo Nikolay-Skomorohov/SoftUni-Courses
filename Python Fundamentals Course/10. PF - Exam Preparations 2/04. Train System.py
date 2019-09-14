@@ -35,9 +35,13 @@ class Ticket:
 
     def __str__(self):
         if self.uses_valid_card:
-            print(f"--{self.destination}: {self.ticket_price / 2:.2f}lv (using card {self.card_number_input})")
+            return f"--{self.destination}: {self.ticket_price:.2f}lv (using card {self.card_number_input})"
         else:
-            print(f"--{self.destination}: {self.ticket_price:.2f}lv")
+            return f"--{self.destination}: {self.ticket_price:.2f}lv"
+
+    def check_price(self):
+        if self.uses_valid_card:
+            self.ticket_price /= 2
 
 
 def create_new_person(first_name: str, last_name: str):
@@ -54,14 +58,16 @@ def create_new_ticket(first_name: str, last_name: str, destination: str, card_nu
 
 def check_card_info(persons_list: list, card_to_check: str, owner_to_check: str, new_ticket: Ticket):
     person = next(x for x in persons_list if x.full_name == owner_to_check)
-    if card_to_check in [x.full_name for x in person.personal_cards]:
+    if card_to_check in [x.card_number for x in person.personal_cards]:
         new_ticket.uses_valid_card = True
     else:
         if sum(int(x) for x in card_to_check) % 7 == 0:
-            if card_to_check in [x for x in persons_list for card in x.personal_cards if x.full_name != owner_to_check]:
+            if any(x for x in persons_list for card in x.personal_cards if card.card_number == card_to_check):
                 print(f"card {card_to_check} already exists for another passenger!")
             else:
                 new_ticket.uses_valid_card = True
+                new_card = create_new_card(person.first_name, person.last_name, card_to_check)
+                person.personal_cards.append(new_card)
                 print(f"issuing card {card_to_check}")
         else:
             print(f"card {card_to_check} is not valid!")
@@ -72,10 +78,14 @@ def initial_cards_input():
     number_of_cards = int(input())
     for card in range(number_of_cards):
         new_info = input().split()
-        new_person = create_new_person(new_info[0], new_info[1])
         new_card = create_new_card(new_info[0], new_info[1], new_info[2])
-        new_person.personal_cards.append(new_card)
-        persons_list.append(new_person)
+        if not any(x for x in persons_list for card in x.personal_cards if card.full_name == new_card.full_name):
+            new_person = create_new_person(new_info[0], new_info[1])
+            new_person.personal_cards.append(new_card)
+            persons_list.append(new_person)
+        else:
+            existing_person = next(x for x in persons_list for card in x.personal_cards if card.full_name == new_card.full_name)
+            existing_person.personal_cards.append(new_card)
     return persons_list
 
 
@@ -102,16 +112,21 @@ def input_for_tickets(persons_list: list):
 
 
 def print_result(persons_list: list):
-    for person in persons_list:
-        person.calculate_total_cost()
-    for person in sorted(persons_list, key=lambda x: -x.total_tickets_cost):
-        print(f"{person.full_name}:")
-        for ticket in sorted(person.personal_tickets, key=lambda x: -x.ticket_price):
-            print(ticket)
+    for prs in persons_list:
+        prs.calculate_total_cost()
+        for ticket in prs.personal_tickets:
+            ticket.check_price()
+    for dude in sorted(persons_list, key=lambda x: -x.total_tickets_cost):
+        if len(dude.personal_tickets) > 0:
+            print(f"{dude.full_name}:")
+            for billet in sorted(dude.personal_tickets, key=lambda x: -x.ticket_price):
+                print(billet)
+            print(f"total: {dude.total_tickets_cost:.2f}lv")
 
 
 def main():
     persons_list = input_for_tickets(initial_cards_input())
+
     print_result(persons_list)
 
 
