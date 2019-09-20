@@ -9,9 +9,9 @@
         <fieldset>
             <legend>Customer Details</legend>
                 <label for="first">First Name</label>
-                <input type="text" id="first"><br>
+                <input type="text" id="first" autofocus placeholder="George"><br>
                 <label for="last">Last Name</label>
-                <input type="text" id="last"><br>
+                <input type="text" id="last" placeholder="Devis"><br>
                 <label for="male">Male</label>
                 <input type="radio" id="male">
                 <label for="female">Female</label>
@@ -24,16 +24,36 @@
                 <label for="phone">Phone</label>
                 <input type="radio" id="phone"><br>
                 <label for="mail">Email</label>
-                <input type="email" id="mail"><br>
+                <input type="email" id="mail" placeholder="your@email.com"><br>
                 <label for="telephone">Phone</label>
-                <input id="telephone"><br>
+                <input id="telephone" placeholder="+359885236225"><br>
+                <label for="town">Town</label>
+                    <select id="town">
+                        <option id="varna">Varna</option>
+                        <option id="plovdiv">Plovidv</option>
+                        <option id="burgas">Burgas</option>
+                        <option id="sofia">Sofia</option>
+                        <option id="pleven">Pleven</option>
+                    </select><br>
                 <label for="age">Age</label>
-                <input type="text" id="age"><br>
+                <input type="number" id="age" min="18" max="70"><br>
                 <label for="language">Programming language</label>
-                <input id="language"><br>
-
-
-
+                    <input list="language" id="language_choice">
+                    <datalist id="language">
+                        <option id="java">Java</option>
+                        <option id="php">PHP</option>
+                        <option id="c#">C#</option>
+                        <option id="javascript">JavaScript</option>
+                        <option id="python">Python</option>
+                        <option id="ruby">Ruby</option>
+                        <option id="other2">Other</option>
+                    </datalist><br>
+                <label for="text"></label>
+                <textarea id="text" rows="5" cols="20" placeholder="More information..."></textarea><br>
+                <input id="terms" type="checkbox">
+                <label for="terms">I agree the Terms and Conditions</label><br>
+                <label for="send"></label>
+                <input id="send" type="submit" value="Send">
         </fieldset>
     </form>
 </body>
