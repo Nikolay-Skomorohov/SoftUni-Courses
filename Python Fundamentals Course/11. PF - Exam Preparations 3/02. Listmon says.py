@@ -8,7 +8,11 @@ while True:
         if sorted(new_set) == sorted(input_list):
             print("It is a set")
         else:
-            print(new_set)
+            print_set = []
+            for item in input_list:
+                if item not in print_set:
+                    print_set.append(item)
+            print(print_set)
     elif command[0] == "filter":
         new_list = []
         if command[1] == "odd":
@@ -29,11 +33,11 @@ while True:
         if (len(input_list) - 1) < int(command[1]) or (len(input_list) - 1) < int(command[2]):
             print("IndexError caught")
         else:
-            print(input_list[int(command[1]):int(command[2])])
+            print(input_list[int(command[1]):(int(command[2]) + 1)])
     elif command[0] == "sort":
         print(list(sorted(input_list)))
     elif command[0] == "reverse":
-        print(list(reversed(input_list)))
+        print(input_list[::-1])
     elif command[0] == "exhausted":
         print(f"I beat It for {count} rounds!")
         break
