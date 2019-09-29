@@ -1,0 +1,11 @@
+html {
+    font-size: 16px;
+}
+
+section {
+    margin: 5em
+}
+
+body ul.icons {
+    list-style: none;
+}
