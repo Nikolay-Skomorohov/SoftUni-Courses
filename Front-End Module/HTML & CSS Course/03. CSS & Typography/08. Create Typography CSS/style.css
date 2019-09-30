@@ -1,0 +1,56 @@
+html {
+    font-size: 16px;
+    font-family: Helvetica, sans-serif;
+    line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: Georgia, serif;
+}
+
+blockquote {
+    border-left: rgb(221, 221, 221);
+    font-style: italic;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td {
+    width: 33%;
+}
+
+thead {
+    text-align: left;
+    margin: 0;
+    background-color: darkgrey;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #f1f1f1;
+}
+
+tbody td {
+    border-color: gainsboro;
+    border-style: solid;
+    margin: 0;
+}
+
+
+
+blockquote {
+    border-left-style: solid;
+    border-left-color: darkgray;
+    padding-left: 1em;
+    padding-top: 0.1em;
+}
+blockquote > footer {
+    text-align: right;
+}
