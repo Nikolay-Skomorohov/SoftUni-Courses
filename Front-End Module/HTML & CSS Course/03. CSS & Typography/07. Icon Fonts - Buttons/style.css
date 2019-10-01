@@ -1,0 +1,16 @@
+a {
+    font-size: 16px;
+    margin: 2em 2em;
+    color: white;
+
+
+    border-radius: 0.1em;
+}
+
+.first {
+    background-color: #ff8c00;
+}
+
+.second{
+    background-color: #008000;
+}
