@@ -1,0 +1,32 @@
+html {
+    font-size: 16px;
+    line-height: 1.2;
+    font-family: Helvetica, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font: 1em/1.2 Georgia, serif;
+}
+
+header {
+    border-bottom: 3px solid black;
+}
+
+header h1 {
+    display: inline-block;
+    background-color: green;
+    width: 25%;
+}
+
+nav {
+    display: inline-block;
+    width: 60%;
+    background-color: yellow;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 1em 1em;
+    color: green;
+    background-color: red;
+}
