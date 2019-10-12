@@ -46,3 +46,15 @@ blockquote footer {
     text-align: right;
 }
 
+img {
+    border: 2px solid black;
+    padding: 1%;
+}
+
+p + img + p {
+    float: right;
+}
+
+h2 + img {
+    float: left;
+}
