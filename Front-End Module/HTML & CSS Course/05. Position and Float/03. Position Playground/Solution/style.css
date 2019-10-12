@@ -1,0 +1,60 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+*, *:after, *:before {
+    box-sizing: border-box;
+}
+
+html {
+    max-width: 60em;
+    margin: auto;
+    color: white;
+}
+
+div {
+    background-image: linear-gradient(to right, #185b9d, #42cca2);
+    position: relative;
+
+}
+
+div + div {
+    clear: both;
+    background-image: linear-gradient(to right, #a83278, #d28212);
+    position: relative;
+}
+
+section {
+    display: block;
+    width: 30%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+}
+
+i {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 3;
+}
+
+.viewport {
+    height: 50vh;
+    width: auto;
+}
+
