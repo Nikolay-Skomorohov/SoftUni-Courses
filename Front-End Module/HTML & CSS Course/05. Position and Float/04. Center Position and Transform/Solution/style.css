@@ -1,0 +1,79 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+*, *:after, *:before {
+    box-sizing: border-box;
+}
+
+html {
+    font: 14px/1.5 Verdana, sans-serif;
+}
+
+body, textarea, button, section, option, input, form {
+    font: inherit;
+}
+
+p, ul, ol, blockquote {
+    padding-bottom: 1.5em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font: 1em/1.2 Georgia, serif;
+    padding-top: 0.5rem;
+    padding-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+h1 { font-size: 2.0em }
+h2 { font-size: 1.8em }
+h3 { font-size: 1.6em }
+h4 { font-size: 1.4em }
+h5 { font-size: 1.2em }
+h6 { font-size: 1.0em }
+
+body {
+    background-color: rgb(238, 238, 238);
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+    position: absolute;
+}
+
+button {
+    display: block;
+    background-color: rgb(0, 153, 0);
+    color: white;
+}
+
+.wrapper {
+    display: block;
+    position: relative;
+    max-width: 60em;
+    margin: auto;
+    height: 50vh;
+}
+
+.card {
+    display: block;
+    background-color: rgb(255, 255, 255);
+    margin: auto;
+    width: 40%;
+    height: auto;
+}
+
+.inner1, .inner2 {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: auto;
+}
+
+
+
+
+
