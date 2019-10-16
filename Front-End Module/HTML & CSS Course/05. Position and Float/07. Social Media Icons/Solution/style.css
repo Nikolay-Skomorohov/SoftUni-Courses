@@ -1,0 +1,77 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    max-width: 60em;
+    max-height: 60em;
+    margin: auto;
+}
+
+
+ul {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    max-width: 30em;
+    min-height: 10em;
+
+}
+
+li {
+    display: inline-block;
+    width: 14%;
+    padding: 6%;
+    margin: 3%;
+    float: left;
+    background-color: rgb(238, 238, 238);
+    border-radius: 50%;
+    position: relative;
+    list-style: none;
+}
+
+a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    position: absolute;
+    top: 18%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+}
+
+i {
+    color: black;
+    font-size: 2em;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.FB i:hover {
+    color: #3b5998;
+}
+
+.TW i:hover {
+    color: #1da1f2;
+}
+
+.Plus i:hover {
+    color: #d54c3f;
+}
+
+.Link i:hover {
+    color: #0077b5;
+}
+
+.Insta i:hover {
+    color: #1da1f2;
+}
