@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*, *:after, *:before {
+    box-sizing: border-box;
+}
+
+html {
+    max-width: 60em;
+    margin: auto;
+    font: 16px/1.5 Verdana, sans-serif;
+}
+
+body, form, input, textarea, option, select, button {
+    font: inherit;
+}
+
+body {
+    background-color: rgb(238, 238, 238);
+}
+
+main {
+    width: 67%;
+    margin: 0;
+    float: left;
+}
+
+aside {
+    width: 25%;
+    float: right;
+    margin-left: 8%
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 1em;
+    line-height: 1.2;
+    font-family: Georgia, serif;
+    padding-bottom: 0.5rem;
+    padding-top: 1.5rem;
+    font-weight: normal;
+}
+
+h1 { font-size: 2.0em }
+h2 { font-size: 1.8em }
+h3 { font-size: 1.6em }
+h4 { font-size: 1.4em }
+h5 { font-size: 1.2em }
+h6 { font-size: 1.0em }
+
+p, ul, ol, blockquote {
+    padding-bottom: 1.5em;
+}
+
+blockquote {
+    float: right;
+    width: 45%;
+    margin-left: 4%;
+    border-left: 2px solid darkgrey;
+    font-family: Georgia, serif;
+    font-style: italic;
+    padding-left: 2.5em;
+    padding-right: 2.5em;
+}
+
+blockquote > footer {
+    text-align: right;
+}
+
+img {
+    background-color: rgb(255, 255, 255);
+    border: 2px solid black;
+    padding: 1%;
+    margin: 1%;
+}
+
+h1 + img {
+    float: right;
+}
+
+h2 + img {
+    float: left;
+}
+
+header {
+        border-bottom: 2px solid black;
+}
+
+
+li a {
+    text-decoration: none;
+    color: green;
+}
+
+ul {
+    padding-left: 2.5em;
+    padding-top: 0.5em;
+    list-style: square;
+
+}
+
+.site-title {
+    display: inline-block;
+    font-weight: bold;
+    padding: 1.5rem 0;
+    font-size: 3em;
+    text-transform: uppercase;
+
+}
+
+
+.navigation {
+    float: right;
+    width: 35%;
+}
+
+.navigation ul {
+    list-style: none;
+}
+
+.navigation li {
+    float: left;
+    padding-bottom: 0.5rem;
+    padding-top: 2.5rem;
+    margin: 3%;
+    color: rgb(0, 102, 0);
+}
