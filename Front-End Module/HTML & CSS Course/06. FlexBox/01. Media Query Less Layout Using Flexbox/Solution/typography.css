@@ -1,0 +1,73 @@
+html {
+    font: 16px/1.5 Verdana, sans-serif;
+    background-color: lightgray;
+}
+
+body, form, input, textarea, option, select, button {
+    font: inherit;
+}
+
+p, ul, ol, blockquote {
+    padding-bottom: 1.5em;
+}
+
+ul, ol {
+    padding-left: 2.5em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Georgia, serif;
+    font-weight: normal;
+    padding-top: 0.5rem;
+    padding-bottom: 1.5rem;
+}
+
+h1 { font-size: 2.0em }
+h2 { font-size: 1.8em }
+h3 { font-size: 1.6em }
+h4 { font-size: 1.4em }
+h5 { font-size: 1.2em }
+h6 { font-size: 1.0em }
+
+body {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 2em;
+    text-transform: uppercase;
+    align-content: stretch;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+header, main, aside, footer {
+    display: block;
+    background-color: white;
+    border: 2px solid grey;
+    padding: 1em;
+    border-radius: 1em;
+    align-items: stretch;
+    margin: 0.5em;
+    box-shadow: 0 0.5em 0.5em 0 rgba(0, 0, 0, 0.2);
+}
+
+header {
+    flex: 1 0 50%;
+    height: 20%;
+}
+
+main {
+    flex: 0 1 66%;
+    height: 55%;
+}
+
+aside {
+    flex: 0 1 31%;
+    height: 55%;
+}
+
+footer {
+    flex: 1 0 50%;
+    height: 15%;
+}
+
