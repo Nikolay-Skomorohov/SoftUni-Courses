@@ -1,0 +1,68 @@
+html {
+    font: 16px/1.5 Helvetica, sans-serif;
+    max-width: 70vw;
+    margin: auto;
+}
+
+button, option, section, textarea, blockquote, body {
+    font: inherit;
+}
+
+p, ul, ol {
+    padding-bottom: 1.5em;
+}
+
+ul, ol {
+    padding-left: 2.5em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Georgia, serif;
+    font-weight: normal;
+    padding-top: 0.5rem;
+    padding-bottom: 1.5rem;
+}
+
+body {
+    padding: 1em;
+}
+
+h1 { font-size: 2.0em }
+h2 { font-size: 1.8em }
+h3 { font-size: 1.6em }
+h4 { font-size: 1.4em }
+h5 { font-size: 1.2em }
+h6 { font-size: 1.0em }
+
+header {
+    border-bottom: 2px solid rgb(0, 0 ,0);
+    display: flex;
+    justify-content: space-between;
+}
+
+header > p {
+    font-size: 3em;
+    padding: 0.8% 0;
+}
+
+nav {
+    width: 40%;
+}
+
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+li {
+    flex: 1 1 25%;
+}
+
+a {
+    display: block;
+    text-decoration: none;
+    color: rgb(0, 153, 0);
+}
