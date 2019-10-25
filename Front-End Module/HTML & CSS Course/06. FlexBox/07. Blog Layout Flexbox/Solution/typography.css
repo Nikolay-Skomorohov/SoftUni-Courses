@@ -1,0 +1,44 @@
+html {
+    font: 14px/1.5 Verdana, sans-serif;
+}
+
+body, button, section, option, input, textarea, blockquote {
+    font: inherit;
+}
+
+p, ul, ol, blockquote {
+    padding-bottom: 1.5em;
+}
+
+ul, ol, blockquote {
+    padding-left: 2.5em;
+    padding-right: 2.5em;
+}
+
+blockquote,
+h1, h2, h3, h4, h5, h6 {
+    font-family: Georgia, serif;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    padding-top: 0.5rem;
+    padding-bottom: 1.5rem;
+}
+
+h1 { font-size: 2.0em; }
+h2 { font-size: 1.8em; }
+h3 { font-size: 1.5em; }
+h4 { font-size: 1.4em; }
+h5 { font-size: 1.2em; }
+h6 { font-size: 1.0em; }
+
+blockquote {
+    font-style: italic;
+    border-left: 2px solid lightgray;
+}
+
+blockquote footer {
+    text-align: right;
+}

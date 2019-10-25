@@ -1,0 +1,66 @@
+div.page {
+    max-width: 60em;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+body {
+    background-color: rgb(238, 238, 238);
+}
+
+header {
+    border-bottom: 2px solid black;
+    flex: 1 1 100%;
+}
+
+header p {
+    font-size: 2.5em;
+    font-weight: bold;
+    padding-bottom: 1.5rem;
+    padding-top: 0.5rem;
+}
+
+main {
+    flex: 1 1 65%;
+}
+
+blockquote {
+    float: right;
+    width: 45%;
+}
+
+aside {
+    flex: 1 1 33%;
+    padding-top: 2%;
+    padding-left: 8%;
+}
+
+aside li a {
+    color: rgb(0, 153, 0);
+    text-decoration: none;
+}
+
+img {
+    background-color: rgb(255, 255, 255);
+
+}
+
+.first-img, .second-img {
+    display: block;
+    border: 2px solid black;
+    padding: 1%;
+    background-color: white;
+}
+
+.first-img {
+    float: right;
+    margin-left: 1%;
+}
+
+.second-img {
+    float: left;
+    margin-right: 1%;
+}
+
+
