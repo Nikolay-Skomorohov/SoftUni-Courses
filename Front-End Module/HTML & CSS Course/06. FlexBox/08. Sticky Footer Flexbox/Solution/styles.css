@@ -1,0 +1,43 @@
+body {
+    display: flex;
+    background-color: rgb(238, 238, 238);
+    height: 100vh;
+    flex-flow: nowrap column;
+    justify-content:  space-between;
+    width: 60em;
+    margin: auto;
+}
+
+header {
+    flex: 0 1 15%;
+    border-bottom: 2px solid black;
+    padding: 3%;
+}
+
+header p {
+    font-size: 2.5em;
+    font-weight: bold;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+}
+
+main {
+    flex: 0 1 80%;
+    padding: 3%;
+}
+
+main p:last-child {
+    padding-bottom: 0;
+}
+
+footer {
+    flex: 0 1 10%;
+    color: rgb(255, 255, 255);
+    background-color: rgb(102, 102, 102);
+    padding: 1%;
+}
+
+footer p {
+    padding-bottom: 0;
+    padding-left: 2%;
+}
