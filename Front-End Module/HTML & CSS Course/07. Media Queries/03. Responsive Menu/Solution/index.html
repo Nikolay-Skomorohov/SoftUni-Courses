@@ -7,14 +7,20 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <input type="checkbox" id="check" class="menu-toggle-hidden">
     <header>
-        <input type="checkbox" id="check" class="menu-toggle-hidden">
-        <h1>Site Title</h1>
-        <label class="menu-switch" for="check">Burger</label>
-        <nav>
+        <h1 class="site-title">Site Title</h1>
+        <label class="menu-switch" for="check">Menu</label>
+        <nav class="site-navigation">
             <ul>
                 <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="#">About</a>
+                    <span class="dropdown-menu">
+                        <a href="#">Address</a>
+                        <a href="#">Phone</a>
+                        <a href="#">Details</a>
+                    </span>
+                </li>
                 <li><a href="#">Products</a></li>
                 <li><a href="#">Stuff</a></li>
                 <li><a href="#">Contacts</a></li>
