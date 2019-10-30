@@ -1,102 +1,111 @@
-@media ( min-width: 100px ) and ( max-width: 600px ) {
-    html {
-        font-size: 12px;
-        background-color: rgb(238, 238, 238);
-    }
+html {
+    font-size: 12px;
+    background-color: rgb(238, 238, 238);
+}
 
-    .site-wrapper {
-        padding: 3em;
-        min-height: 100vh;
-        display: flex;
-        flex-wrap: wrap;
-    }
+.site-wrapper {
+    padding: 3em;
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+}
 
-    .site-menu-toggle {
-        display: none;
-    }
+.site-menu-toggle {
+    display: none;
+}
 
+.site-menu-toggle + p + .site-menu-label + nav {
+    display: none;
+}
 
+.site-menu-toggle:checked + p + .site-menu-label + nav {
+    display: block;
+}
 
-    .site-menu-label {
-        font-size: 1.5em;
-        text-align: center;
-        flex: 1 0 100%;
-        padding-bottom: 1.5em;
-    }
+.site-menu-toggle:checked + p + .site-menu-label:before {
+    content: "X ";
+    font-weight: bold;
+}
 
-    .site-header {
-        flex: 1 0 100%;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
+.site-menu-label {
+    font-size: 1.5em;
+    text-align: center;
+    flex: 1 0 100%;
+    padding-bottom: 1.5em;
+}
 
-    .site-header p {
-        flex: 1 0 100%;
-        font-size: 3em;
-        padding-top: 0.5rem;
-        padding-bottom: 1.5rem;
-        font-weight: bold;
-    }
+.site-header {
+    flex: 1 0 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 
-    .site-navigation {
-        flex: 1 0 100%;
-    }
+.site-header p {
+    flex: 1 0 100%;
+    font-size: 3em;
+    padding-top: 0.5rem;
+    padding-bottom: 1.5rem;
+    font-weight: bold;
+}
 
-    .site-navigation > ul {
-        width: 100%;
-        list-style: none;
-        display: flex;
-        flex-flow: wrap column;
-        background-color: white;
-        border-top: 2px solid black;
-        border-bottom: 2px solid black;
-        align-content: space-between;
-        padding: 1em;
-    }
+.site-navigation {
+    flex: 1 0 100%;
+}
 
-    .site-navigation li {
-        flex: 1 0 100%;
-        width: 100%;
-        position: relative;
-    }
+.site-navigation > ul {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    flex-flow: wrap column;
+    background-color: white;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    align-content: space-between;
+    padding: 1em;
+}
 
-    .site-main {
-        flex: 1 0 100%;
-        display: flex;
-        flex-wrap: wrap;
-    }
+.site-navigation li {
+    flex: 1 0 100%;
+    width: 100%;
+    position: relative;
+}
 
-    .site-main h1, h2, p, blockquote {
-        flex: 1 0 100%;
-    }
+.site-main {
+    flex: 1 0 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
 
-    .first-img, .second-img {
-        display: block;
-        padding: 0.5em;
-        background-color: rgb(255, 255, 255);
-        border: 2px solid black;
-        box-shadow: 0 0 0.3em 0;
-        margin: 1em auto;
-    }
+.site-main h1, h2, p, blockquote {
+    flex: 1 0 100%;
+}
 
-    .first-img img .second-img img {
-        width: 100%;
-        height: 100%;
-    }
+.first-img, .second-img {
+    display: block;
+    padding: 0.5em;
+    background-color: rgb(255, 255, 255);
+    border: 2px solid black;
+    box-shadow: 0 0 0.3em 0;
+    margin: 1em;
+}
 
-    .site-aside {
-        flex: 1 0 100%;
-    }
+.first-img img .second-img img {
+    width: 100%;
+    height: 100%;
+}
 
-    .site-aside nav {
-        display: flex;
-        flex-wrap: wrap;
-    }
+.site-aside {
+    flex: 1 0 100%;
+}
 
-    .site-aside nav h3 {
-        flex: 1 0 100%;
-    }
+.site-aside nav {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.site-aside nav h3 {
+    flex: 1 0 100%;
 }
 
 @media ( min-width: 601px ) and ( max-width: 900px ) {
@@ -105,7 +114,24 @@
     }
 
     .site-wrapper {
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
+    }
+
+    .site-main {
+
+    }
+
+    .first-img, .second-img {
+        display: block;
+        flex: 0 1 auto;
+    }
+
+    .first-img + p, .second-img + p {
+        flex: 1 1 55%;
+    }
+
+    blockquote {
+        flex: 0 0 45%;
     }
 }
 

@@ -38,9 +38,5 @@ blockquote p {
 }
 
 blockquote p:last-child {
-    padding-bottom: 0;
-}
-
-blockquote footer {
     text-align: right;
 }
