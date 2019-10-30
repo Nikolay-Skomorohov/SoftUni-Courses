@@ -1,6 +1,7 @@
 @media ( min-width: 100px ) and ( max-width: 600px ) {
     html {
         font-size: 12px;
+        background-color: rgb(238, 238, 238);
     }
 
     .site-wrapper {
@@ -14,19 +15,20 @@
         display: none;
     }
 
-    .site-header {
-        border-bottom: 3px solid black;
-        flex: 1 0 100%;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
+
 
     .site-menu-label {
         font-size: 1.5em;
         text-align: center;
         flex: 1 0 100%;
         padding-bottom: 1.5em;
+    }
+
+    .site-header {
+        flex: 1 0 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     .site-header p {
@@ -41,12 +43,22 @@
         flex: 1 0 100%;
     }
 
-    .site-navigation ul {
-        width: 90%;
+    .site-navigation > ul {
+        width: 100%;
         list-style: none;
-        text-decoration: none;
         display: flex;
         flex-flow: wrap column;
+        background-color: white;
+        border-top: 2px solid black;
+        border-bottom: 2px solid black;
+        align-content: space-between;
+        padding: 1em;
+    }
+
+    .site-navigation li {
+        flex: 1 0 100%;
+        width: 100%;
+        position: relative;
     }
 
     .site-main {
