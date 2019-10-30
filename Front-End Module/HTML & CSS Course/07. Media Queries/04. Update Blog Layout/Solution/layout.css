@@ -1,0 +1,122 @@
+@media ( min-width: 100px ) and ( max-width: 600px ) {
+    html {
+        font-size: 12px;
+    }
+
+    .site-wrapper {
+        padding: 3em;
+        min-height: 100vh;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .site-menu-toggle {
+        display: none;
+    }
+
+    .site-header {
+        border-bottom: 3px solid black;
+        flex: 1 0 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .site-menu-label {
+        font-size: 1.5em;
+        text-align: center;
+        flex: 1 0 100%;
+        padding-bottom: 1.5em;
+    }
+
+    .site-header p {
+        flex: 1 0 100%;
+        font-size: 3em;
+        padding-top: 0.5rem;
+        padding-bottom: 1.5rem;
+        font-weight: bold;
+    }
+
+    .site-navigation {
+        flex: 1 0 100%;
+    }
+
+    .site-navigation ul {
+        width: 90%;
+        list-style: none;
+        text-decoration: none;
+        display: flex;
+        flex-flow: wrap column;
+    }
+
+    .site-main {
+        flex: 1 0 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .site-main h1, h2, p, blockquote {
+        flex: 1 0 100%;
+    }
+
+    .first-img, .second-img {
+        display: block;
+        padding: 0.5em;
+        background-color: rgb(255, 255, 255);
+        border: 2px solid black;
+        box-shadow: 0 0 0.3em 0;
+        margin: 1em auto;
+    }
+
+    .first-img img .second-img img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .site-aside {
+        flex: 1 0 100%;
+    }
+
+    .site-aside nav {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .site-aside nav h3 {
+        flex: 1 0 100%;
+    }
+}
+
+@media ( min-width: 601px ) and ( max-width: 900px ) {
+    html {
+        font-size: 14px;
+    }
+
+    .site-wrapper {
+        flex-wrap: nowrap;
+    }
+}
+
+@media ( min-width: 901px ) and ( max-width: 1200px ) {
+    html {
+        font-size: 16px;
+    }
+
+    .site-wrapper {
+        flex-wrap: wrap;
+    }
+}
+
+@media ( min-height: 1201px ) {
+    html {
+        font-size: 18px;
+    }
+
+    .site-wrapper {
+        flex-wrap: wrap;
+    }
+}
+
+img {
+    display: block;
+}
