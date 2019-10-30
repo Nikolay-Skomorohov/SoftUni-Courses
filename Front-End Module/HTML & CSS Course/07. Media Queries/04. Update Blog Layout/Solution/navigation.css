@@ -44,7 +44,6 @@
     color: white;
 }
 
-
 li:hover > ul.dropdown-level1, li:hover > ul.dropdown-level2 {
     display: block;
 }

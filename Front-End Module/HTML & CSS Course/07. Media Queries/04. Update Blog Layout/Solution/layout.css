@@ -117,10 +117,6 @@ html {
         flex-wrap: wrap;
     }
 
-    .site-main {
-
-    }
-
     .first-img, .second-img {
         display: block;
         flex: 0 1 auto;
@@ -138,10 +134,69 @@ html {
 @media ( min-width: 901px ) and ( max-width: 1200px ) {
     html {
         font-size: 16px;
+        max-width: 74em;
     }
 
     .site-wrapper {
         flex-wrap: wrap;
+    }
+
+    .site-header {
+        align-items: center;
+        border-bottom: 3px solid black;
+    }
+
+    .site-menu-toggle + p + .site-menu-label + nav {
+        display: block;
+    }
+
+    .site-header p, .site-navigation {
+        flex: 1 1 40%;
+    }
+
+    .site-navigation > ul {
+        list-style: none;
+        display: flex;
+        flex-flow: nowrap row;
+        background-color: white;
+        border-top: 0 solid black;
+        border-bottom: 0 solid black;
+        align-content: space-between;
+        padding: 0.5em;
+    }
+
+    .site-navigation li {
+        flex: 1 1 auto;
+        position: relative;
+    }
+
+    .site-header p, .navigation {
+        flex: 1 1 35%;
+    }
+
+    .site-menu-label {
+        display: none;
+    }
+
+    .site-main {
+        flex: 1 1 70%;
+    }
+
+    .site-aside {
+        flex: 1 1 25%;
+    }
+
+    .first-img, .second-img {
+        display: block;
+        flex: 0 1 auto;
+    }
+
+    .first-img + p, .second-img + p {
+        flex: 1 1 55%;
+    }
+
+    blockquote {
+        flex: 0 0 45%;
     }
 }
 
