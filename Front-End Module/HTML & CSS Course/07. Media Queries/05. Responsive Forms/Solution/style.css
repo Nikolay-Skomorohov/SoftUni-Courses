@@ -1,0 +1,80 @@
+html {
+    font: 14px/1.5 Verdana, sans-serif;
+    background-color: rgb(255, 255, 255);
+}
+
+body, button, legend, input, label, option, select, textarea {
+    font: inherit;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper {
+    max-width: 30em;
+    background-color: rgb(238, 238, 238);
+}
+
+.flex-wrap {
+    width: 100%;
+    min-height: 25vh;
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: left;
+    align-content: space-evenly;
+}
+
+p {
+    flex: 0 1 25%;
+    color: black;
+    font-weight: bold;
+    margin: 0;
+}
+
+input {
+    flex: 0 1 70%;
+}
+
+button {
+    color: white;
+    background-color: black;
+    padding: 0.5em 1em;
+    font-weight: bold;
+}
+
+fieldset {
+    position: relative;
+    border: 2px solid grey;
+}
+
+legend {
+    background-color: rgb(238, 238, 238);
+    position: absolute;
+    top: -15%;
+    left: -0.4%;
+    width: 30%;
+    padding: 0.5em;
+    text-align: left;
+    border: 2px solid grey;
+    z-index: 10;
+}
+
+@media ( max-width: 900px ) {
+    body {
+        display: flex;
+        flex-flow: wrap column;
+        justify-content: center;
+        align-items: center;
+    }
+    p, input {
+        flex: 1 0 100%;
+    }
+
+    p {
+        vertical-align: bottom;
+    }
+}
