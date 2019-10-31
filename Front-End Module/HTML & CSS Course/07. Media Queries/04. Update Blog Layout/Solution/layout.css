@@ -47,6 +47,7 @@ html {
     padding-top: 0.5rem;
     padding-bottom: 1.5rem;
     font-weight: bold;
+    text-align: center;
 }
 
 .site-navigation {
@@ -72,13 +73,18 @@ html {
 }
 
 .site-main {
-    flex: 1 0 100%;
+    flex: 0 0 100%;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .site-main h1, h2, p, blockquote {
     flex: 1 0 100%;
+}
+
+.site-main h1, h2 {
+    text-align: center;
 }
 
 .first-img, .second-img {
@@ -88,42 +94,60 @@ html {
     border: 2px solid black;
     box-shadow: 0 0 0.3em 0;
     margin: 1em;
+    flex: 0 1;
 }
 
 .first-img img .second-img img {
-    width: 100%;
-    height: 100%;
+    width: auto;
+    height: auto;
 }
 
 .site-aside {
     flex: 1 0 100%;
-}
-
-.site-aside nav {
     display: flex;
-    flex-wrap: wrap;
-}
-
-.site-aside nav h3 {
-    flex: 1 0 100%;
+    justify-content: center;
 }
 
 @media ( min-width: 601px ) and ( max-width: 900px ) {
     html {
-        font-size: 14px;
+        font-size: 13px;
     }
 
     .site-wrapper {
         flex-wrap: wrap;
     }
 
+    .site-header p {
+        text-align: left;
+    }
+
+    .site-main {
+        justify-content: flex-start;
+    }
+
+    .site-main h1, h2 {
+        text-align: left;
+}
+
     .first-img, .second-img {
         display: block;
         flex: 0 1 auto;
+        margin: 0 1em 1.5em 1em;
     }
 
     .first-img + p, .second-img + p {
         flex: 1 1 55%;
+    }
+
+    h1 {
+        order: -3;
+    }
+
+    .first-img {
+        order: -1;
+    }
+    .first-img + p {
+        order: -2;
     }
 
     blockquote {
@@ -133,8 +157,8 @@ html {
 
 @media ( min-width: 901px ) and ( max-width: 1200px ) {
     html {
-        font-size: 16px;
-        max-width: 74em;
+        font-size: 14px;
+        max-width: 64em;
     }
 
     .site-wrapper {
@@ -148,6 +172,10 @@ html {
 
     .site-menu-toggle + p + .site-menu-label + nav {
         display: block;
+    }
+
+    .site-header p {
+        text-align: left;
     }
 
     .site-header p, .site-navigation {
@@ -180,19 +208,40 @@ html {
 
     .site-main {
         flex: 1 1 70%;
+        justify-content: space-between;
+    }
+
+    .site-main h1, h2 {
+        text-align: left;
     }
 
     .site-aside {
         flex: 1 1 25%;
     }
 
+    .site-aside nav {
+        padding-left: 2em;
+    }
+
     .first-img, .second-img {
         display: block;
         flex: 0 1 auto;
+        margin: 0 0 1.5em 0;
+    }
+
+    h1 {
+        order: -3;
+    }
+
+    .first-img {
+        order: -1;
+    }
+    .first-img + p {
+        order: -2;
     }
 
     .first-img + p, .second-img + p {
-        flex: 1 1 55%;
+        flex: 0 1 60%;
     }
 
     blockquote {
@@ -200,13 +249,97 @@ html {
     }
 }
 
-@media ( min-height: 1201px ) {
+@media ( min-width: 1201px ) {
     html {
-        font-size: 18px;
+        font-size: 14px;
+        max-width: 74em;
     }
 
     .site-wrapper {
         flex-wrap: wrap;
+    }
+
+    .site-header {
+        align-items: center;
+        border-bottom: 3px solid black;
+    }
+
+    .site-menu-toggle + p + .site-menu-label + nav {
+        display: block;
+    }
+
+    .site-header p {
+        text-align: left;
+    }
+
+    .site-header p, .site-navigation {
+        flex: 1 1 30%;
+    }
+
+    .site-navigation > ul {
+        list-style: none;
+        display: flex;
+        flex-flow: nowrap row;
+        background-color: white;
+        border-top: 0 solid black;
+        border-bottom: 0 solid black;
+        align-content: space-between;
+        padding: 0.5em;
+    }
+
+    .site-navigation li {
+        flex: 1 1 auto;
+        position: relative;
+    }
+
+    .site-header p, .navigation {
+        flex: 1 1 35%;
+    }
+
+    .site-menu-label {
+        display: none;
+    }
+
+    .site-main {
+        flex: 1 1 70%;
+        justify-content: space-between;
+    }
+
+    .site-main h1, h2 {
+        text-align: left;
+    }
+
+    .site-aside {
+        flex: 1 1 25%;
+    }
+
+    .site-aside nav {
+        padding-left: 2em;
+    }
+
+    .first-img, .second-img {
+        display: block;
+        flex: 0 1 auto;
+        margin: 0 0 1.5em 0;
+    }
+
+    h1 {
+        order: -3;
+    }
+
+    .first-img {
+        order: -1;
+    }
+    .first-img + p {
+        order: -2;
+    }
+
+    .first-img + p, .second-img + p {
+        flex: 0 1 65%;
+    }
+
+    blockquote {
+        flex: 0 0 45%;
     }
 }
 
