@@ -1,0 +1,9 @@
+html {
+    font: 14px/1.5 Helvetica, sans-serif;
+    min-height: 100vh;
+}
+
+body, section, button {
+    font: inherit;
+}
+
