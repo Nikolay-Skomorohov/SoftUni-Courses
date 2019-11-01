@@ -1,0 +1,123 @@
+body {
+
+}
+
+img {
+    display: block;
+}
+
+.wrapper {
+    padding: 2em;
+    background-color: white;
+    max-width: 64em;
+    display: flex;
+    flex-flow: nowrap column;
+    margin: auto;
+}
+
+.site-menu-toggle {
+    display: none;
+}
+
+.site-header {
+    flex: 0 1 100%;
+    display: flex;
+    flex-flow: nowrap row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-title {
+    display: flex;
+    flex-flow: nowrap column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.site-title h1 {
+    font-size: 4em;
+    color: #800080;
+    padding-bottom: 0;
+}
+
+.site-title h3 {
+    text-transform: uppercase;
+    font-size: 1em;
+    padding-top: 0;
+}
+
+.site-menu-label {
+    display: none;
+}
+
+.site-navigation {
+    flex: 0 1 40%;
+}
+
+.site-navigation ul {
+    display: flex;
+    flex-flow: row nowrap;
+    list-style: none;
+    justify-content: space-evenly;
+}
+
+.site-need-website {
+    display: flex ;
+    flex-flow: row nowrap;
+    max-width: 40em;
+    align-self: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.site-need-website-text {
+    flex: 0 1 65%;
+    display: flex;
+    flex-flow: nowrap column;
+    align-items: flex-start;
+}
+
+.site-need-website-text button{
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 0.5em;
+    color: black;
+    padding: 0.5em 1em;
+    cursor: pointer;
+}
+
+.site-need-website-planet {
+    flex: 0 1 30%;
+    position: relative;
+}
+
+.site-need-website-planet i{
+    font-size: 11em;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+}
+
+.site-our-team {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.site-our-team h2 {
+    flex: 1 0 100%;
+    text-align: center;
+}
+
+.card-person {
+    flex: 0 1 30%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+.card-person img {
+    padding: 5%;
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
