@@ -1,0 +1,96 @@
+html {
+    background-color: lightgray;
+}
+
+.site-table {
+    max-width: 60em;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: nowrap column;
+}
+
+.table-head, .table-body {
+    flex: 1 0 100%;
+}
+
+.table-head tr, .table-body tr {
+    flex: 1 0 100%;
+    display: flex;
+    flex-flow: nowrap row;
+    justify-content: space-between;
+}
+
+.table-body tr:nth-child(odd) > td {
+    background-color: lightgray;
+    border: 1px solid grey;
+}
+
+.table-body tr:nth-child(even) > td {
+    background-color: white;
+}
+
+.table-head tr th, .table-body tr td {
+    flex: 1 0 33%;
+    background-color: black;
+    color: white;
+    padding-left: 0.5em;
+    text-align: left;
+    border: 1px solid grey;
+}
+
+.table-body tr td {
+    flex: 1 0 33%;
+    background-color: white;
+    color: black;
+    padding-left: 0.5em;
+    text-align: left;
+}
+
+@media ( min-width: 100px ) and ( max-width: 900px ) {
+    .table-head {
+        display: none;
+    }
+
+    .table-body {
+        padding: 1em;
+        display: flex;
+        flex-flow: row wrap;
+    }
+
+    .table-body tr {
+        flex: 1 0 100%;
+        display: flex;
+        flex-flow: row wrap;
+    }
+
+    .table-body tr td {
+        flex: 1 0 100%;
+    }
+
+    .table-body tr:nth-child(odd) > td {
+        background-color: lightgray;
+        border: 1px solid grey;
+    }
+
+    .table-body tr:nth-child(even) > td {
+        background-color: white;
+    }
+
+    .table-body tr td:nth-child(1):before {
+        content: "First Name";
+        font-weight: bold;
+        padding-right: 0.5em;
+    }
+
+    .table-body tr td:nth-child(2):before {
+        content: "Last Name";
+        font-weight: bold;
+        padding-right: 0.5em;
+    }
+
+    .table-body tr td:nth-child(3):before {
+        content: "Job Title";
+        font-weight: bold;
+        padding-right: 0.5em;
+    }
+}
