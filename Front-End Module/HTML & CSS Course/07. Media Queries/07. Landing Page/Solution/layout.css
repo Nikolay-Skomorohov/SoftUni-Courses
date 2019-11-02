@@ -64,10 +64,11 @@ img {
 .site-need-website {
     display: flex ;
     flex-flow: row nowrap;
-    max-width: 40em;
+    max-width: 45em;
     align-self: center;
     justify-content: space-between;
     position: relative;
+    margin-top: 3em;
 }
 
 .site-need-website-text {
@@ -101,23 +102,156 @@ img {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
+    align-content: space-between;
+    align-items: flex-end;
+    margin: 5em 0;
 }
 
 .site-our-team h2 {
     flex: 1 0 100%;
     text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    position: relative;
+    font-weight: bold;
+}
+
+.site-our-team h2:after {
+    position: absolute;
+    content: "";
+    width: 10%;
+    height: 5%;
+    top: 100%;
+    left: 45%;
+    background-color: black;
 }
 
 .card-person {
-    flex: 0 1 30%;
+    height: 42%;
+    flex: 0 1 31%;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+    align-content: stretch;
+    text-align: center;
 }
 
 .card-person img {
-    padding: 5%;
-    width: 100%;
-    height: auto;
+    padding: 2em;
+    width: 80%;
+    height: 80%;
     border-radius: 50%;
+}
+
+.card-person h6 {
+    padding-bottom: 0;
+    font-weight: bold;
+}
+
+.site-newsletter {
+    flex: 1 0 100%;
+    min-height: 15em;
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: center;
+    background-color: #800080;
+    align-items: center;
+    align-content: space-evenly;
+}
+
+.site-newsletter h2 {
+    font-size: 2em;
+    flex: 1 0 100%;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    padding-top: 0;
+    padding-bottom: 1em;
+    position: relative;
+}
+
+.site-newsletter h2:after {
+    position: absolute;
+    content: "";
+    background-color: black;
+    width: 10%;
+    height: 4%;
+    top: 100%;
+    left: 45%;
+    padding: 0;
+}
+
+.site-newsletter label, .site-newsletter input {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    border-radius: 0.3em;
+    padding: 0.5em;
+}
+
+.site-newsletter input {
+    flex: 0 0 40%;
+}
+
+.site-newsletter label {
+    font-weight: bold;
+    margin-left: 1%;
+}
+
+.site-testimonials {
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: space-between;
+    margin: 5em 0;
+}
+
+.site-testimonials h2 {
+    flex: 1 0 100%;
+    text-align: center;
+    font-weight: bold;
+    position: relative;
+    padding: 0;
+    margin-bottom: 3%;
+}
+
+.site-testimonials h2:after {
+    position: absolute;
+    content: "";
+    width: 10%;
+    height: 5%;
+    top: 90%;
+    left: 45%;
+    background-color: black;
+    padding: 0;
+}
+
+.card-testimony {
+    flex: 0 0 31%;
+    max-height: 42%;
+    display: flex;
+    flex-flow: nowrap column;
+    justify-content: center;
+    align-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.card-testimony img {
+    padding: 2em;
+    height: 80%;
+    width: 80%;
+    border-radius: 50%;
+}
+
+.card-testimony h6 {
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+}
+
+.site-footer {
+    display: flex;
+    flex-flow: nowrap row;
+    justify-content: space-between;
+    border-top: 0.2em solid black;
 }
