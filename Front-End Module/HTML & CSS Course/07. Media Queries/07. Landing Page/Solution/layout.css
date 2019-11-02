@@ -28,14 +28,16 @@ img {
 }
 
 .site-title {
+    flex: 0 1 40%;
     display: flex;
     flex-flow: nowrap column;
     align-items: center;
     justify-content: flex-start;
+    text-align: center;
 }
 
 .site-title h1 {
-    font-size: 4em;
+    font-size: 2.5em;
     color: #800080;
     padding-bottom: 0;
 }
@@ -51,7 +53,7 @@ img {
 }
 
 .site-navigation {
-    flex: 0 1 40%;
+    flex: 0 1 45%;
 }
 
 .site-navigation ul {
@@ -92,10 +94,11 @@ img {
     position: relative;
 }
 
-.site-need-website-planet i{
-    font-size: 11em;
-    position: absolute;
-    top: 0; left: 0; bottom: 0; right: 0;
+.site-need-website-planet i {
+    text-align: center;
+    display: block;
+    font-size: 12em;
+    padding-top: 10%;
 }
 
 .site-our-team {
@@ -103,7 +106,7 @@ img {
     flex-flow: row wrap;
     justify-content: space-between;
     align-content: space-between;
-    align-items: flex-end;
+    align-items: flex-start;
     margin: 5em 0;
 }
 
@@ -127,13 +130,14 @@ img {
 }
 
 .card-person {
-    height: 42%;
+    max-height: 42%;
     flex: 0 1 31%;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
     align-content: stretch;
     text-align: center;
+    justify-content: flex-end;
 }
 
 .card-person img {
@@ -191,11 +195,13 @@ img {
 
 .site-newsletter input {
     flex: 0 0 40%;
+    cursor: text;
 }
 
 .site-newsletter label {
     font-weight: bold;
     margin-left: 1%;
+    cursor: pointer;
 }
 
 .site-testimonials {
@@ -254,4 +260,107 @@ img {
     flex-flow: nowrap row;
     justify-content: space-between;
     border-top: 0.2em solid black;
+    max-width: 60em;
+    margin: 0 auto;
+}
+
+.site-footer ul {
+    list-style: none;
+}
+
+.site-footer a {
+    text-decoration: none;
+    color: black;
+}
+
+.site-footer div p, ul {
+    padding: 0;
+}
+
+.footer-left {
+    flex: 0 0 30%;
+    display: flex;
+    flex-flow: nowrap column;
+    justify-content: center;
+}
+
+.footer-sitemap {
+    flex: 0 0 30%;
+    flex-flow: wrap column;
+    padding-left: 3em;
+}
+
+.footer-contacts {
+    flex: 0 0 30%;
+    flex-flow: wrap column;
+}
+
+.footer-contacts i + p {
+    padding-left: 1%;
+}
+
+@media ( min-width: 100px ) and ( max-width: 900px ) {
+    .site-header {
+        flex-flow: wrap row;
+    }
+
+    .site-menu-toggle:checked + div + label + nav {
+        flex: 1 0 100%;
+        display: block;
+    }
+
+    .site-menu-toggle:checked + div + label + nav ul li a {
+        background-color: #800080;
+        color: white;
+        border-radius: 0.2em;
+        padding: 0.5em 1em;
+        display: block;
+    }
+
+    .site-menu-toggle:checked + div + label + nav ul li a:hover {
+        background-color: #7d6080;
+    }
+
+    .site-menu-label {
+        display: block;
+        font-size: 2em;
+        cursor: pointer;
+    }
+
+    .site-title {
+        flex: 0 0 45%;
+        text-align: center;
+    }
+
+    .site-navigation {
+        flex: 0 0 40%;
+        display: none;
+    }
+
+    .site-need-website {
+        align-items: center;
+    }
+
+    .site-need-website-planet i {
+        font-size: 12em;
+
+    }
+
+    .card-person {
+        flex: 0 0 41%;
+    }
+
+    .card-testimony {
+        flex: 0 0 41%;
+    }
+
+    .site-footer {
+        flex-flow: wrap row;
+    }
+
+    .site-footer > * {
+        flex: 1 0 100%;
+        padding-left: 0;
+        margin-top: 1em;
+    }
 }
