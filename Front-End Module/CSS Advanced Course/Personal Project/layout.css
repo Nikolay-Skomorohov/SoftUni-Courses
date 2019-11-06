@@ -1,0 +1,44 @@
+html {
+    color: rgb(58, 58, 58);
+}
+
+body {
+    min-height: 100vh;
+}
+
+.site-wrapper {
+    padding: 0 2em;
+    max-width: 64em;
+    margin: 0 auto;
+}
+
+.site-header {
+    background-color: black;
+    display: flex;
+    flex-flow: wrap column;
+    justify-content: space-between;
+    align-content: center;
+    padding: 1em;
+}
+
+.site-header-title {
+    color: #185b9d;
+    text-align: center;
+}
+
+.site-header-navigation {
+    flex: 0 0 100%;
+}
+
+.site-header-navigation ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.site-header-navigation ul li a{
+    text-decoration: none;
+    color: white;
+}
+
