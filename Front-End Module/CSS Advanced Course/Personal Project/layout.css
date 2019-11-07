@@ -7,38 +7,99 @@ body {
 }
 
 .site-wrapper {
-    padding: 0 2em;
-    max-width: 64em;
-    margin: 0 auto;
-}
-
-.site-header {
-    background-color: black;
     display: flex;
-    flex-flow: wrap column;
-    justify-content: space-between;
-    align-content: center;
-    padding: 1em;
+    flex-flow: nowrap column;
+    position: relative;
+    padding: 1rem;
 }
 
-.site-header-title {
-    color: #185b9d;
+.site-header-menu-toggle {
+    display: none;
+}
+
+.site-header-desktop {
+    display: none;
+}
+
+.site-header-mobile {
+    flex: 1 0 100%;
+    display: flex;
+    flex-flow: nowrap column;
+}
+
+.site-header-mobile-title {
     text-align: center;
 }
 
-.site-header-navigation {
-    flex: 0 0 100%;
-}
-
-.site-header-navigation ul {
-    list-style: none;
+.site-header-mobile-navigation ul {
     display: flex;
+    flex-flow: nowrap row;
+    justify-content: space-around;
+    align-content: flex-end;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+}
+
+.site-header-mobile-navigation ul li i {
+    font-size: 1.5em;
+}
+
+
+.site-main {
+    flex: 1 0 100%;
+    display: flex;
+    flex-flow: nowrap column;
+}
+
+.site-aside {
+    flex: 1 0 100%;
+}
+
+.site-footer {
+    flex: 1 0 100%;
+    display: flex;
+    flex-flow: nowrap column;
+    align-content: flex-start;
+}
+
+.site-footer ul {
+    flex: 0 1 auto;
+    display: flex;
+    flex-flow: nowrap row;
+    list-style: none;
     justify-content: space-between;
-    align-content: center;
+    font-size: 2.5em;
+    padding: 1rem;
+    align-items: flex-start;
 }
 
-.site-header-navigation ul li a{
-    text-decoration: none;
-    color: white;
+@media only screen and ( min-width: 480px ) and ( orientation: portrait ) {
+
+
 }
 
+@media only screen and ( min-width: 768px ) and ( orientation: portrait ) {
+
+}
+
+
+@media only screen and ( min-width: 992px ) and ( orientation: portrait ) {
+
+}
+
+@media only screen and ( min-width: 1200px ) {
+
+}
+
+@media only screen and ( min-width: 2560px ) {
+
+}
+
+@media speech {
+    
+}
+
+@media only screen and ( scripting: none )  {
+    
+}

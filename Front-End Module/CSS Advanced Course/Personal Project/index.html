@@ -8,9 +8,19 @@
 </head>
 <body>
     <div class="site-wrapper">
-        <header class="site-header">
-            <h1 class="site-header-title">Centrist</h1>
-            <nav class="site-header-navigation">
+        <input type="checkbox" class="site-header-menu-toggle" id="header-menu-toggle">
+        <header class="site-header-mobile">
+            <nav class="site-header-mobile-navigation">
+                <ul>
+                    <li><label for="header-menu-toggle" class="site-header-mobile-menu-label"><i class="fas fa-bars"></i></label></li>
+                    <li><a href="#"><h1 class="site-header-mobile-title">Centrist</h1></a></li>
+                    <li><a href="#"><i class="fas fa-search"></i></a></li>
+                </ul>
+            </nav>
+        </header>
+        <header class="site-header-desktop">
+            <h1 class="site-header-desktop-title">Centrist</h1>
+            <nav class="site-header-desktop-navigation">
                 <ul>
                     <li><a href="#">Home</a></li>
                     <li><a href="#">About</a></li>
@@ -30,10 +40,16 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis, eum ipsam maxime officiis pariatur quam recusandae voluptas. Ad aspernatur distinctio explicabo illum mollitia, necessitatibus nobis perspiciatis quam quas temporibus vero.</p>
         </main>
         <aside class="site-aside">
-            <p>Aside content</p>
+            <p>Aside content - Twitter</p>
         </aside>
         <footer class="site-footer">
-            <p>Footer content</p>
+            <ul>
+                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+            </ul>
+            <p>© 2019 - All Rights Reserved.</p>
         </footer>
     </div>
 </body>
