@@ -1,5 +1,5 @@
 html {
-    font: 20px/1.5 Verdana, sans-serif;
+    font: 18px/1.5em Arial, sans-serif;
 }
 
 body, select, option, textarea, input, button {
@@ -15,19 +15,19 @@ ul, ol, blockquote {
     padding-right: 2.5em;
 }
 
-blockquote
+blockquote,
 h1, h2, h3, h4, h5, h6 {
     font-family: Georgia, serif;
-    font-weight: normal;
+    font-weight: bold;
     padding-top: 0.5rem;
-    padding-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
 }
 
 h1 { font-size: 2.0em }
-h2 { font-size: 1.8em }
-h3 { font-size: 1.6em }
-h4 { font-size: 1.4em }
-h5 { font-size: 1.2em }
+h2 { font-size: 1.7em }
+h3 { font-size: 1.5em }
+h4 { font-size: 1.3em }
+h5 { font-size: 1.1em }
 h6 { font-size: 1.0em }
 
 blockquote {

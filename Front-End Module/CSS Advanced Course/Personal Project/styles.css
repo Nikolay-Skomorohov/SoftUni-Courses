@@ -3,3 +3,44 @@
 @import "layout.css";
 @import "navigation.css";
 
+html {
+    color: rgb(58, 58, 58);
+}
+
+a {
+    text-decoration: none;
+}
+
+.site-header-mobile, .site-footer {
+    background-color: #262a33;
+}
+
+.site-header-mobile h1 {
+    color: royalblue;
+    text-transform: uppercase;
+}
+
+.site-header-mobile i {
+    color: white;
+    cursor: pointer;
+}
+
+.site-header-mobile i:hover {
+    background-color: royalblue;
+}
+
+.site-main time {
+    font-size: 0.6em;
+}
+
+.site-footer, .site-footer i {
+    color: white;
+}
+
+.site-footer i:hover {
+    background-color: royalblue;
+}
+
+.site-footer p:last-child {
+    text-align: center;
+}

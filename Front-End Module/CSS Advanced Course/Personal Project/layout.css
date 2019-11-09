@@ -1,7 +1,3 @@
-html {
-    color: rgb(58, 58, 58);
-}
-
 body {
     min-height: 100vh;
 }
@@ -10,7 +6,6 @@ body {
     display: flex;
     flex-flow: nowrap column;
     position: relative;
-    padding: 1rem;
 }
 
 .site-header-menu-toggle {
@@ -25,6 +20,11 @@ body {
     flex: 1 0 100%;
     display: flex;
     flex-flow: nowrap column;
+    padding: 0.25em 0.5em;
+}
+
+.site-header-mobile i {
+    padding: 0.5em;
 }
 
 .site-header-mobile-title {
@@ -34,7 +34,7 @@ body {
 .site-header-mobile-navigation ul {
     display: flex;
     flex-flow: nowrap row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-content: flex-end;
     align-items: center;
     list-style: none;
@@ -45,15 +45,24 @@ body {
     font-size: 1.5em;
 }
 
-
 .site-main {
     flex: 1 0 100%;
     display: flex;
     flex-flow: nowrap column;
+    padding: 1em;
+}
+
+.site-main h3 {
+    padding-bottom: 0.1rem;
+}
+
+.site-main article time + p {
+    padding-top: 1em;
 }
 
 .site-aside {
     flex: 1 0 100%;
+    padding: 1em;
 }
 
 .site-footer {
@@ -61,20 +70,29 @@ body {
     display: flex;
     flex-flow: nowrap column;
     align-content: flex-start;
+    padding: 1em;
+}
+
+.site-footer, .site-footer i {
+    padding: 0.5em;
 }
 
 .site-footer ul {
-    flex: 0 1 auto;
+    flex: 0 1 100%;
     display: flex;
     flex-flow: nowrap row;
     list-style: none;
     justify-content: space-between;
     font-size: 2.5em;
-    padding: 1rem;
-    align-items: flex-start;
+    padding: 0;
+    align-items: center;
 }
 
-@media only screen and ( min-width: 480px ) and ( orientation: portrait ) {
+.site-footer p:last-child {
+    padding-bottom: 0.5em;
+}
+
+@media only screen and ( min-width: 480px ) and ( orientation: landscape ) {
 
 
 }
@@ -84,7 +102,7 @@ body {
 }
 
 
-@media only screen and ( min-width: 992px ) and ( orientation: portrait ) {
+@media only screen and ( min-width: 992px ) and ( orientation: landscape ) {
 
 }
 
