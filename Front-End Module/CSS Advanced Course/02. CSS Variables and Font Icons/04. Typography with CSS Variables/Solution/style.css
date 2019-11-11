@@ -1,0 +1,26 @@
+@import url("reset.css");
+@import url("typography.css");
+@import url("variables.css");
+
+.site-wrapper {
+    max-width: 60em;
+    margin: 0 auto;
+}
+
+@media (min-width: 500px ) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 700px ) {
+    html {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 1600px ) {
+    html {
+        font-size: 18px;
+    }
+}
