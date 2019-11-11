@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+html {
+    font-family: Verdana, sans-serif;
+}
+
+h1, h3, p {
+    padding: 1rem 0;
+}
+
+h1 {
+    font-size: var(--heading-h1-font-size);
+    text-align: center;
+}
+
+h3 {
+    font-size: var(--heading-h3-font-size);
+    font-style: italic;
+}
+
+p {
+    font-size: var(--paragraph-p-font-size);
+
+}
+
+.site-wrapper {
+    display: flex;
+    flex-flow: column;
+    max-width: 60em;
+    margin: 0 auto;
+}
