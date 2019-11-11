@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+html {
+    font: 16px/1.5 Verdana, sans-serif;
+}
+
+h4, p, a {
+    color: var(--primary-color, tan);
+    padding: 0.5rem 0;
+}
+
+.wrapper {
+    border: 2px solid var(--yellow-color, orange);
+    display: flex;
+    flex-flow: nowrap row;
+    justify-content: space-evenly;
+    max-width: 60em;
+    margin: 0 auto;
+    padding: 1.5em;
+    background-color: var(--white-color);
+}
+
+.card {
+    flex: 0 1 30%;
+    display: flex;
+    flex-flow: nowrap column;
+}
+
+.card h4 + p {
+    flex: 1 0 auto;
+}
+
+.button a {
+    background-color: var(--yellow-color);
+    color: var(--white-color);
+    padding: 0.5em 1em;
+    border-radius: 0.3em;
+    text-decoration: none;
+}
+
+.button a:hover {
+    background-color: var(--primary-color);
+    color: var(--yellow-color)
+}
