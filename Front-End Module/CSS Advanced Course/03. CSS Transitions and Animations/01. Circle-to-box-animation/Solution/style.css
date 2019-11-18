@@ -1,0 +1,44 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+*, *:after, *:before {
+    box-sizing: border-box;
+}
+
+section {
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+div {
+    display: block;
+    width: 5em;
+    height: 5em;
+    background-color: red;
+    border-radius: 50%;
+    animation-name: test;
+    animation-direction: alternate;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes test {
+    from {
+        width: 5em;
+        height: 5em;
+        background-color: red;
+        border-radius: 50%;
+    }
+
+    to {
+        width: 10em;
+        height: 10em;
+        background-color: orange;
+        border-radius: 0;
+    }
+}
+
