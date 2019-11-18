@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+nav {
+    max-width: 30em;
+    max-height: 50%;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    position: relative;
+}
+
+li {
+    display: flex;
+    max-width: 15em;
+    min-height: 1.5em;
+    animation-name: icons;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+    animation-duration: 1.2s;
+    position: relative;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+li:nth-child(2) { animation-delay: 0.2s}
+li:nth-child(3) { animation-delay: 0.4s}
+li:nth-child(4) { animation-delay: 0.6s}
+li:nth-child(5) { animation-delay: 0.8s}
+li:nth-child(6) { animation-delay: 1.0s}
+li:nth-child(7) { animation-delay: 1.2s}
+
+@keyframes icons {
+    from {
+        opacity: 0;
+        left: -30%;
+    }
+
+    to {
+        opacity: 1;
+        left: 0;
+    }
+}
+
+li.loaded {
+
+}
+
+li i {
+    display: block;
+    font-size: 16px;
+    width: 2.5em;
+    padding: 0 0.5em;
+    text-align: center;
+}

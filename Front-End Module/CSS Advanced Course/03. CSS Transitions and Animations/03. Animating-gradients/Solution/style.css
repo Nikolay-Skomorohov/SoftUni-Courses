@@ -1,0 +1,38 @@
+body {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div:before {
+    content: "";
+    position: absolute;
+    background: linear-gradient(#81929e, #e7ebed);
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 1;
+    opacity: 1;
+}
+
+div {
+    position: relative;
+    width: 25em;
+    height: 25em;
+}
+
+div:after {
+    content: "";
+    position: absolute;
+    background: linear-gradient(#ca8635, #f8cf99);
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 3;
+    opacity: 1;
+    transition-property: opacity;
+    transition-duration: 1s;
+}
+
+div:hover:after {
+    opacity: 0;
+}
+
