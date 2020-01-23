@@ -1,28 +1,23 @@
 from collections import deque
-
 pumps = int(input())
-pump_info = deque()
+start_deck = deque()
 
 for pump in range(pumps):
-    pump_info.append(input())
+    start_deck.append(input())
 
-start_index = 0
+it_deck = start_deck.copy()
 fuel = 0
-
-while pump_info:
-    current = pump_info.popleft()
-    pump_stats = current.split(" ")
-    fuel += int(pump_stats[0])
-    if not pump_info and start_index == 0:
-        break
-    elif fuel >= int(pump_stats[1]):
-        fuel -= int(pump_stats[1])
+index = 0
+while it_deck:
+    current = it_deck[0].split(" ")
+    fuel += int(current[0])
+    if fuel >= int(current[1]):
+        fuel -= int(current[1])
+        it_deck.popleft()
         continue
     else:
-        pump_info.append(current)
-        start_index += 1
+        start_deck.append(start_deck.popleft())
+        it_deck = start_deck.copy()
+        index += 1
         fuel = 0
-        if start_index == len(pump_info):
-            exit()
-
-print(start_index)
+print(index)
