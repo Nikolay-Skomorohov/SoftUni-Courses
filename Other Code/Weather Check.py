@@ -4,8 +4,7 @@
 # for the next 10 days and displays it - sinoptik.bg
 
 import requests
-import bs4
-import re
+impor
 
 # Web data collection
 
