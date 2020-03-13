@@ -3,17 +3,17 @@ import math
 
 class Point:
     def __init__(self, x, y):
-        self.x1 = x
-        self.y1 = y
+        self.x = x
+        self.y = y
 
     def set_x(self, new_x):
-        self.x1 = new_x
+        self.x = new_x
 
     def set_y(self, new_y):
-        self.y1 = new_y
+        self.y = new_y
 
     def distance(self, x2, y2):
-        result = math.sqrt(((x2 - self.x1) ** 2) + ((y2 - self.y1) ** 2))
+        result = math.sqrt((self.x - x2) ** 2 + (self.y - y2) ** 2)
         return result
 
 
