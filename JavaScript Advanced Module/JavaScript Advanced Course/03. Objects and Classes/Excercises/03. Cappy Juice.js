@@ -1,29 +1,30 @@
 function solve(inputList) {
-    let result = [];
-    let juiceData = [];
+    let result = {};
+    let juiceData = {};
     for (let juice of inputList) {
         let juiceName = juice.split(" => ")[0]
         let juiceCount = Number(juice.split(" => ")[1]);
-        for (let obj of juiceData) {
-            if (! Object.keys(obj).includes(juiceName)) {
-                let newObj = {};
-                newObj[juiceName] = Number(juiceCount);
-                juiceData.push(newObj);
+        if (! Object.keys(juiceData).includes(juiceName)) {
+            juiceData[juiceName] = Number(juiceCount);
+        }
+        else {
+            juiceData[juiceName] += Number(juiceCount);
+        }
+        if (juiceData[juiceName] >= 1000) {
+            if (! Object.keys(result).includes(juiceName)) {
+                result[juiceName] = Math.floor(juiceData[juiceName] / 1000);
+                juiceData[juiceName] -= result[juiceName] * 1000;
             }
             else {
-                obj[juiceName] += Number(juiceCount);
-            }
-            if (obj[juiceName] >= 1000) {
-                let resultObj = {};
-                resultObj[juiceName] = Math.floor(obj[juiceName] / 1000);
-                obj[juiceName] -= bottles * 1000
-                result.push(resultObj);
-
+                result[juiceName] += Math.floor(juiceData[juiceName] / 1000);
+                juiceData[juiceName] -= result[juiceName] * 1000;
             }
         }
     }
-    console.log(result);
-
+    let key = Object.keys(result);
+    for (let i of key) {
+        console.log(`${i} => ${result[i]}`)
+    }
 }
 
 solve(['Orange => 2000',
@@ -32,10 +33,10 @@ solve(['Orange => 2000',
        'Peach => 600',
        'Strawberry => 549']
 );
-// solve(['Kiwi => 234',
-//        'Pear => 2345',
-//        'Watermelon => 3456',
-//        'Kiwi => 4567',
-//        'Pear => 5678',
-//        'Watermelon => 6789']
-// );
+solve(['Kiwi => 234',
+       'Pear => 2345',
+       'Watermelon => 3456',
+       'Kiwi => 4567',
+       'Pear => 5678',
+       'Watermelon => 6789']
+);
