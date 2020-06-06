@@ -5,17 +5,58 @@ function solve(inputList) {
         let itemComponent = item.split(" | ")[1];
         let itemSubcomponent = item.split(" | ")[2];
         if (!Object.keys(result).includes(itemSystem)) {
-            result[itemSystem] = [];
+            result[itemSystem] = {};
         }
         if (!Object.keys(result[itemSystem]).includes(itemComponent)) {
-            result[itemSystem][itemComponent] = [];
+            result[itemSystem][itemComponent] = []
         }
         result[itemSystem][itemComponent].push(itemSubcomponent);
     }
-    let sorting = sort(function(a, b) {
-        null;
-    })
-    console.log(result);
+    let sortedSystems = Object.keys(result).sort(function(a, b) {
+        let aLen = Object.keys(result[a]).length;    
+        let bLen = Object.keys(result[b]).length;    
+        if (aLen < bLen) {
+                return 1;
+            }
+        else if (aLen > bLen) {
+                return -1;
+            }
+        else {
+            if (a.toUpperCase() < b.toUpperCase()) {
+                return -1;
+            }
+            else {
+                return 1;
+            }
+        }}
+    )
+    for (let system of sortedSystems) {
+        console.log(system);
+        let sortedComponents = Object.keys(result[system]).sort(function(a, b) {
+            let aLen = result[system][a].length;
+            let bLen = result[system][b].length;
+            if (aLen < bLen) {
+                return 1;
+            }
+        else if (aLen > bLen) {
+                return -1;
+            }
+        else {
+            if (a.toUpperCase() < b.toUpperCase()) {
+                return -1;
+            }
+            else {
+                return 1;
+            }
+        }
+        })
+        for (let comp of sortedComponents) {
+            console.log(`|||${comp}`);
+            for (let sub of result[system][comp]) {
+                console.log(`||||||${sub}`);
+            }
+        }
+    }
 }
 
 solve(['SULS | Main Site | Home Page',
