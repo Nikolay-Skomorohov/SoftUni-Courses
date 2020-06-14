@@ -3,13 +3,13 @@ class Company {
         this.departments = [];
     }
 
-    AddEmployee(username, salary, position, department) {
-        arguments.forEach(element => {
+    addEmployee(username, salary, position, department) {
+        const funcArgs = [username, salary, position, department];
+        funcArgs.forEach(element => function(){
             if (element === null || element === undefined || element === "") {
                 throw Error("Invalid input!");
             }
-
-            if (salary < 0) {
+            if (+salary < 0) {
                 throw Error(" Invalid input!");
             }
         });
@@ -30,7 +30,19 @@ class Company {
     }
 
     bestDepartment() {
-        return;
+        let bestDepartment;
+        let departSalaryList = [];
+        for (let depart of this.departments) {
+            let totalSalary = 0;
+            for (let employee of depart) {
+                totalSalary += +employee['salary'];
+            }
+            let departAverageSalary = totalSalary / Object.keys(depart).length;
+            departSalaryList[depart['department'] = departAverageSalary];
+        }
+        departSalaryList.sort((a, b) => b.salary - a.salary);
+        bestDepartment = departSalaryList[0];
+        console.log(bestDepartment);
     }
 }
 
