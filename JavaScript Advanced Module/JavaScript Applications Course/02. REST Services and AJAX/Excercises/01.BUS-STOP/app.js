@@ -5,25 +5,29 @@ function getInfo() {
     const stopListEl = document.getElementById('buses');
 
     stopIDbuttonEl.addEventListener('click', function checkBusStop() {
-        if (stopIDtextEl.value !== '') {
+        stopNameEl.innerText = "";
+        stopListEl.innerHTML = "";
+        if (stopIDtextEl.value) {
+
             const inputText = stopIDtextEl.value;
-            const incomingData = fetch(`https://judgetests.firebaseio.com/businfo/${inputText}.json`)
+            fetch(`https://judgetests.firebaseio.com/businfo/${inputText}.json`)
                 .then(function(response) {
-                    if (response.status === 200) {
-                        return response.json()
+                    if (response.status !== 200) {
+                        stopNameEl.textContent = 'Error';
                     }
                     else {
-                        return stopNameEl.textContent = 'Error';
+                        return response.json()
                     }})
-                .then(function (r) {
-                    return r;
+                .then(function(data) {
+                    stopNameEl.textContent = data.name;
+
+                    for (let bus of Object.keys(data.buses)) {
+                        let newLi = document.createElement('li');
+                        newLi.innerText = `Bus ${bus} arrives in ${data.buses[bus]} minutes`;
+                        stopListEl.appendChild(newLi);
+                    }
                 })
-            stopNameEl.textContent = incomingData.name;
-            for (let bus of Object.keys(incomingData.buses)) {
-                let newLi = document.createElement('li');
-                newLi.innerText = bus;
-                stopListEl.appendChild(newLi);
-            }
+            stopIDtextEl.value = "";
         }
     });
 }
