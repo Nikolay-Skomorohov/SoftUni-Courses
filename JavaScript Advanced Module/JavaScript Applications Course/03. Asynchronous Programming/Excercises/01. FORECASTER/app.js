@@ -6,87 +6,53 @@ function attachEvents() {
 
     inputButtonElem.addEventListener('click', function() {
         const requestedCity = inputTextElem.value;
+        getInfo(requestedCity);
 
-        function getCode(requestedCity) {
-            return fetch('https://judgetests.firebaseio.com/locations.json')
-                .then(function(response) {
-                    if (response.status === 200) {
-                        return response.json();
-                    }
-                })
-                .then(data => {
-                    for (let i = 0; i < data.length; i++) {
-                        if (data[i].name === requestedCity) {
-                            return data[i].code;
-                        }
-                    }
-
-                })
-                .catch(error => console.log('Error'));
+        async function getCode(requestedCity) {
+            const response = await fetch('https://judgetests.firebaseio.com/locations.json')
+            const fetchData = await response.json();
+            const resultObj = fetchData.find(element => element.name === requestedCity);
+            return resultObj.code;
         }
 
-        function getCurrentWeather(cityCode) {
-            return fetch(`https://judgetests.firebaseio.com/forecast/today/${cityCode}.json`)
-                .then(function(response) {
-                    if (response.status === 200) {
-                        return response.json();
-                    }
-                })
-                .then(data => {
-                    return data.forecast;
-                })
-                .catch(error => console.log('Error'));
+        async function getCurrentWeather(cityCode) {
+            const response = await fetch(`https://judgetests.firebaseio.com/forecast/today/${cityCode}.json`);
+            const fetchData = await response.json();
+            // console.log(fetchData.forecast)
+            return fetchData.forecast;
         }
 
-        function getNext3Weather(cityCode) {
-            return fetch(`https://judgetests.firebaseio.com/forecast/upcoming/${cityCode}.json`)
-                .then(function(response) {
-                    if (response.status === 200) {
-                        return response.json();
-                    }
-                })
-                .then(data => {
-                    return data.forecast;
-                })
-                .catch(error => console.log('Error'));
+        async function getNext3Weather(cityCode) {
+            const response = await fetch(`https://judgetests.firebaseio.com/forecast/upcoming/${cityCode}.json`);
+            const fetchData = await response.json();
+            // console.log(fetchData.forecast)
+            return fetchData.forecast;
         }
-
 
         async function getInfo(requestedCity) {
-            try {
-                let cityCode = await getCode(requestedCity);
-                let currentCondition = await getCurrentWeather(cityCode);
-                let next3days = await getNext3Weather(cityCode);
+            let cityCode = await getCode(requestedCity);
+            let currentCondition = await getCurrentWeather(cityCode);
+            let next3days = await getNext3Weather(cityCode);
 
-                return { 'current': currentCondition,
-                         'next3days': next3days };
-            }
-            catch (e) {
-                console.log('Error');
-            }
+            const cityWeather = { 'name': requestedCity, 'current': currentCondition, 'next3days': next3days };
+
+            document.getElementById('forecast').style.display = 'block';
+
+            let newSpaCity = document.createElement('span')
+            newSpaCity.className = 'forecast-data';
+            newSpaCity.textContent = cityWeather.name;
+            currentCondElem.appendChild(newSpaCity);
+
+            let newSpanTemp = document.createElement('span')
+            newSpanTemp.className = 'forecast-data';
+            newSpanTemp.textContent = `${cityWeather.current.low}&#176;/${cityWeather.current.high}&#176;`;
+            currentCondElem.appendChild(newSpanTemp);
+
+            let newSpanCond = document.createElement('span')
+            newSpanCond.className = 'forecast-data';
+            newSpanCond.textContent = `${cityWeather.next3days.condition}`;
+            next3DaysElem.appendChild(newSpanCond);
         }
-
-        let cityWeather = getInfo(requestedCity).then(r => r);
-
-        document.getElementById('forecast').style.display = 'visible';
-
-        let newSpaCity = document.createElement('span')
-        newSpaCity.className = 'forecast-data';
-        newSpaCity.textContent = cityWeather.name;
-        currentCondElem.appendChild(newSpaCity);
-
-        let newSpanTemp = document.createElement('span')
-        newSpaCity.className = 'forecast-data';
-        newSpaCity.textContent = `${cityWeather.forecast.low}&#176;/${cityWeather.forecast.high}&#176;`;
-        currentCondElem.appendChild(newSpanTemp);
-
-        let newSpanCond = document.createElement('span')
-        newSpaCity.className = 'forecast-data';
-        newSpaCity.textContent = `${cityWeather.forecast.condition}`;
-        currentCondElem.appendChild(newSpanCond);
-
-
     })
 }
-
 attachEvents();
