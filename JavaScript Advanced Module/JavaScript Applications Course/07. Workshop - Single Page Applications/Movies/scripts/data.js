@@ -13,7 +13,7 @@ const hostEndpoints = {
     MOVIE_BY_ID: 'data/movies?where=objectId%3D%27'
 }
 
-async function registerUser(username, password) {
+export async function registerUser(username, password) {
     return (await fetch(host(hostEndpoints.REGISTER), {
         method: 'POST',
         headers: {
@@ -26,7 +26,7 @@ async function registerUser(username, password) {
     })).json()
 }
 
-async function loginUser(username, password) {
+export async function loginUser(username, password) {
     const result = await (await fetch(host(hostEndpoints.LOGIN), {
         method: 'POST',
         headers: {
@@ -45,7 +45,7 @@ async function loginUser(username, password) {
     return result
 }
 
-async function userLogout() {
+export async function userLogout() {
     if (!localStorage.getItem('userToken')) {
         throw new Error('User not logged in.')
     }
@@ -67,7 +67,7 @@ async function userLogout() {
 
 }
 
-async function createMovie(movie) {
+export async function createMovie(movie) {
     if (!localStorage.getItem('userToken')) {
         throw new Error('User not logged in.');
     }
@@ -84,7 +84,7 @@ async function createMovie(movie) {
     })).json();
 }
 
-async function getAllMovies() {
+export async function getAllMovies() {
     if (!localStorage.getItem('userToken')) {
         throw new Error('User not logged in.');
     }
@@ -99,7 +99,7 @@ async function getAllMovies() {
     })).json()
 }
 
-async function getMovieById(movieId) {
+export async function getMovieById(movieId) {
     if (!localStorage.getItem('userToken')) {
         throw new Error('User not logged in.');
     }
@@ -115,7 +115,7 @@ async function getMovieById(movieId) {
     })).json();
 }
 
-async function editMovie(movieId, newData) {
+export async function editMovie(movieId, newData) {
     if (!localStorage.getItem('userToken')) {
         throw new Error('User not logged in.');
     }
@@ -132,7 +132,7 @@ async function editMovie(movieId, newData) {
     })).json();
 }
 
-async function deleteMovie(movieId) {
+export async function deleteMovie(movieId) {
     if (!localStorage.getItem('userToken')) {
         throw new Error('User not logged in.');
     }
@@ -147,12 +147,10 @@ async function deleteMovie(movieId) {
     })).json();
 }
 
-async function buyTicket(movieId) {
+export async function buyTicket(movieId) {
     if (!localStorage.getItem('userToken')) {
         throw new Error('User not logged in.');
     }
-
-    const token = localStorage.getItem('userToken');
 
     const currentTickets = ((await getMovieById(movieId))[0].ticketsCount) - 1;
     if (currentTickets >= 0) {
