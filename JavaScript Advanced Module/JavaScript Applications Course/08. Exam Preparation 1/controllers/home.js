@@ -5,3 +5,4 @@ export async function home() {
     }
     this.partial('./templates/home.hbs', this.app.userData);
 }
+

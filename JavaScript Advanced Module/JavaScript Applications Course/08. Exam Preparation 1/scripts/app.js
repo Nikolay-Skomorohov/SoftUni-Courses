@@ -1,31 +1,28 @@
-import { home } from "../controllers/home.js";
-import { login, loginPost, logout, register, registerPost, profile } from "../controllers/user.js";
+import { home } from '../controllers/home.js';
+import { getLogin, postLogin } from '../controllers/login.js';
+import { getRegister, postRegister } from '../controllers/register.js';
+import { logout } from './data.js';
 
 window.addEventListener('load', function() {
     const app = Sammy('body', function() {
         this.use('Handlebars', 'hbs');
 
         this.userData = {
-            loggedUsername: "",
-            userId: "",
-            loggedIn: false,
-            userToken: ""
+            username: "",
+            token: "",
+            userId: ""
         }
 
         this.get('#/home', home);
-        this.get('index.html', home);
         this.get('/', home);
+        this.get('index.html', home);
 
-        this.get('#/login', login);
-        this.post('#/login', (context) => { loginPost.call(context); });
-        this.get('#/logout', logout)
+        this.get('#login', getLogin);
+        this.post('#login', (context) => { postLogin.call(context) });
+        this.get('#register', getRegister);
+        this.post('#register', (context) => { postRegister.call(context) });
+        this.get('#logout', logout);
+    });
 
-        this.get('#/register', register);
-        this.post('#/register', (context) => { registerPost.call(context); });
-
-        this.get('#/create', profile);
-
-    })
-
-    app.run('#/home');
+    app.run();
 })

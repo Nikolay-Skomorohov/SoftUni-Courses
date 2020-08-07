@@ -1,17 +1,20 @@
 function host(endpoint) {
-    const appId = '2F9CF796-9B38-ECD1-FF1A-6F2D6480D300';
-    const restKey = '9C0BA5BD-E71E-4DA9-BC2A-F3098C32E43C';
-    return `https://api.backendless.com/${appId}/${restKey}/${endpoint}`;
+    const appId = '4DAB02D8-310E-567F-FF4D-6B5F2BE2B100';
+    const apiKey = 'A1B1C47B-F3C6-417F-84F4-A6AC76132278';
+    return `https://api.backendless.com/${appId}/${apiKey}/${endpoint}`;
 }
+
+const dbName = "events";
 
 const ENDPOINTS = {
-    REGISTER: "users/register",
-    LOGIN: "users/login",
-    LOGOUT: "users/logout"
+    REGISTER: 'users/register',
+    LOGIN: 'users/login',
+    LOGOUT: 'users/logout',
+    CREATE: `${dbName}/`
 }
 
-export async function registerFetch(username, password) {
-    return (await (fetch(host(ENDPOINTS.REGISTER), {
+export async function register(username, password){
+    return (await fetch(host(ENDPOINTS.REGISTER), {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -20,11 +23,11 @@ export async function registerFetch(username, password) {
             "email": username,
             "password": password
         })
-    }))).json();
+    })).json()
 }
 
-export async function loginFetch(username, password) {
-    return (await (fetch(host(ENDPOINTS.LOGIN), {
+export async function login(username, password){
+    return (await fetch(host(ENDPOINTS.LOGIN), {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -33,14 +36,22 @@ export async function loginFetch(username, password) {
             "login": username,
             "password": password
         })
-    }))).json();
+    })).json();
 }
 
-export async function logoutFetch(token) {
-    return await (await fetch(host(ENDPOINTS.LOGIN), {
+export async function logout(){
+    const token = localStorage.getItem('token');
+    await (await fetch(host(ENDPOINTS.LOGOUT), {
         method: "GET",
         headers: {
             "user-token": token
         }
-    })).json();
+    }))
+    localStorage.setItem('username', "");
+    localStorage.setItem('token', "");
+    localStorage.setItem('userId', "");
+    this.app.userData.username = "";
+    this.app.userData.token = "";
+    this.app.userData.userId = "";
+    this.redirect('#/home');
 }

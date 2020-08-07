@@ -1,6 +1,7 @@
+
 <nav class="site-header sticky-top py-1">
     <div class="container d-flex flex-column flex-md-row justify-content-between">
-      <a class="py-2" href="#/home">
+      <a class="py-2" href="#">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
           stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mx-auto" role="img"
           viewBox="0 0 24 24" focusable="false">
@@ -11,18 +12,18 @@
           </path>
         </svg>
       </a>
-      {{#if this.loggedIn}}
-      <a class="py-2 d-none d-md-inline-block" href="#/create">Organize Event</a>
-      <a class="py-2 d-none d-md-inline-block" href="#/profile">{{loggedUsername}}</a>
-      <a class="py-2 d-none d-md-inline-block" href="#/logout">Logout</a>
-      {{else}}
-      <a class="py-2 d-none d-md-inline-block" href="#/login">Login</a>
-      {{/if}}
+        {{#if username}}
+          <a class="py-2 d-none d-md-inline-block" href="#create">Organize Event</a>
+          <a class="py-2 d-none d-md-inline-block" href="#profile">{{username}}</a>
+          <a class="py-2 d-none d-md-inline-block" href="#logout">Logout</a>
+        {{else}}
+            <a class="py-2 d-none d-md-inline-block" href="#login">Login</a>
+        {{/if}}
     </div>
-</nav>
+  </nav>
 
-<div id="notifications">
-  <div id="successBox" class="alert alert-success" role="alert">{Success Message...}</div>
-  <div id="loadingBox" class="alert alert-info" role="alert">Loading...</div>
-  <div id="errorBox" class="alert alert-danger" role="alert">{Error Message...}</div>
-</div>
+    <div id="notifications">
+      <div id="successBox" class="alert alert-success" role="alert">{Success Message...}</div>
+      <div id="loadingBox" class="alert alert-info" role="alert">Loading...</div>
+      <div id="errorBox" class="alert alert-danger" role="alert">{Error Message...}</div>
+  </div>
