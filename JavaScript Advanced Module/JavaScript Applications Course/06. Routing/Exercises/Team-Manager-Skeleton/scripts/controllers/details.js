@@ -3,8 +3,8 @@ import { getTeamsByID, getTeams } from "../data.js";
 export default async function() {
     this.partials = {
         header: await this.load('./templates/common/header.hbs'),
-        teamControls: await this.load('./templates/catalog/teamControls.hbs'),
-        teamMember: await this.load('./templates/catalog/teamMember.hbs'),
+        teamControls: await this.load('./templates/cinema/teamControls.hbs'),
+        teamMember: await this.load('./templates/cinema/teamMember.hbs'),
         footer: await this.load('./templates/common/footer.hbs')
     };
 
@@ -22,5 +22,5 @@ export default async function() {
 
     Object.assign(data, this.app.userData);
 
-    this.partial('./templates/catalog/details.hbs', data);
+    this.partial('./templates/cinema/details.hbs', data);
 }

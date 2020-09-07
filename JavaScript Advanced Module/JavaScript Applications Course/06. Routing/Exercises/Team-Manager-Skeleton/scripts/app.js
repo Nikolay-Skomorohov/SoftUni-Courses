@@ -22,8 +22,8 @@ window.addEventListener('load', function(){
         this.get('#/register', register);
         this.get('#/login', login);
         this.get('#/about', about);
-        this.get('#/catalog', catalog);
-        this.get('#/catalog/:id', details);
+        this.get('#/cinema', catalog);
+        this.get('#/cinema/:id', details);
         this.get('#/create', create);
         this.get('#/edit/:id', edit);
 

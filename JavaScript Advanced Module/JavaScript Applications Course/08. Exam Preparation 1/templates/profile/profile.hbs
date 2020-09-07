@@ -2,11 +2,14 @@
 <div class="col-md-6 text-center col-lg">
     <img class="profile-img" src="./images/user.png" />
     <div class="profile-info">
-      <p>Username: <small>PAKO</small></p>
-      <p class="infoType">Organizer of 2 events.</p>
+      <p>Username: <small>{{username}}</small></p>
+      <p class="infoType">Organizer of {{userEvents.length}} events.</p>
+        {{#if userEvents}}
       <p>LED ZEPPELIN Convert</p>
       <p>Techno Party</p>
+        {{else}}
       <p>No events</p>
+        {{/if}}
     </div>
   </div>
   {{> footer}}

@@ -10,7 +10,9 @@ const ENDPOINTS = {
     REGISTER: 'users/register',
     LOGIN: 'users/login',
     LOGOUT: 'users/logout',
-    CREATE: `${dbName}/`
+    CREATE: `data/${dbName}`,
+    EVENTS: `data/${dbName}`,
+    DETAILS: `data/${dbName}/`
 }
 
 export async function register(username, password){
@@ -54,4 +56,36 @@ export async function logout(){
     this.app.userData.token = "";
     this.app.userData.userId = "";
     this.redirect('#/home');
+}
+
+export async function create(event){
+    const token = localStorage.getItem('token');
+    const result = (await fetch(host(ENDPOINTS.CREATE), {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "user-token": token
+        },
+        body: JSON.stringify(event)
+    })).json();
+}
+
+export async function events(){
+    const token = localStorage.getItem('token');
+    return (await fetch(host(ENDPOINTS.EVENTS), {
+        method: "GET",
+        headers: {
+            "user-token": token
+        }
+    })).json();
+}
+
+export async function details(eventId){
+    const token = localStorage.getItem('token');
+    return (await fetch(host(ENDPOINTS.DETAILS + eventId), {
+        method: "GET",
+        headers: {
+            "user-token": token
+        }
+    })).json();
 }
